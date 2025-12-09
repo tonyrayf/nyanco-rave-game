@@ -1,13 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_frag_grenade",
+  "%Name":"obj_throw_devices_trajectory",
   "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_block_solid","path":"objects/obj_block_solid/obj_block_solid.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_frag_grenade",
+  "name":"obj_throw_devices_trajectory",
   "overriddenProperties":[],
   "parent":{
     "name":"Devices",
@@ -25,21 +24,13 @@
   "physicsRestitution":0.1,
   "physicsSensor":false,
   "physicsShape":1,
-  "physicsShapePoints":[
-    {"x":0.0,"y":0.0,},
-    {"x":32.0,"y":0.0,},
-    {"x":32.0,"y":32.0,},
-    {"x":0.0,"y":32.0,},
-  ],
-  "physicsStartAwake":false,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_frag_grenade",
-    "path":"sprites/spr_frag_grenade/spr_frag_grenade.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }
