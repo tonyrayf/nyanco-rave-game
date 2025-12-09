@@ -1,3 +1,5 @@
+if (!active) exit;
+
 next_x = mouse_x - x;
 next_y = mouse_y - y;
 

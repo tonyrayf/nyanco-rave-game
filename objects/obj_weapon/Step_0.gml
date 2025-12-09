@@ -1,3 +1,5 @@
+if (!active) exit;
+
 if (setup)
 {
 	setup = false;

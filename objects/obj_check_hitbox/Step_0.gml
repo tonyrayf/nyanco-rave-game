@@ -1,0 +1,1 @@
+is_object_in_zone = place_meeting(x,y,obj_player);

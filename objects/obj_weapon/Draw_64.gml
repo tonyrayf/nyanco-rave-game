@@ -1,3 +1,5 @@
+if (!active) exit;
+
 if (draw_setup)
 {
 	draw_setup = false;

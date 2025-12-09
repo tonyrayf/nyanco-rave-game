@@ -1,3 +1,5 @@
+active = true;
+
 setup = true;
 
 current_weapon = {};
