@@ -1,6 +1,7 @@
 if (!layer_sequence_exists(layer, seq))
 {
 	instance_destroy();
+	exit;
 }
 
 #region X
@@ -52,7 +53,44 @@ y += speed_y;
 layer_sequence_x(seq, x);
 layer_sequence_y(seq, y);
 
-if (instance_exists(enemy_FOV) and enemy_FOV.is_object_in_zone){
-	show_debug_message("QWE");
+if(setup){
+	enemy_FOV = get_inst_from_seq(seq,obj_check_hitbox);
+	setup = false;
 }
 
+switch current_state{
+	case 0:
+		if(enemy_FOV.is_object_in_zone){
+			suspiciousness++;
+			if(suspiciousness>=idle_to_search){
+				current_state=1;
+				suspiciousness=0;
+				alarm[0] = search_to_idle;
+			}
+		} else {
+			if(suspiciousness>0){
+				suspiciousness-=idle_to_search/idle_sus_return;
+			} else if (suspiciousness<0){
+				suspiciousness=0;
+			}
+		}
+	break;
+	case 1:
+		if(enemy_FOV.is_object_in_zone){
+			suspiciousness++;
+			if(suspiciousness>=search_to_detected){
+				suspiciousness=0;
+				current_state=states.Detected;
+				alarm[0] = -1;
+			}
+		} else {
+			if(suspiciousness>0){
+				suspiciousness-=search_to_detected/search_sus_return;
+			} else if (suspiciousness<0){
+				suspiciousness=0;
+			}
+		}
+	break;
+}
+
+show_debug_message(string(current_state)+"  "+string(suspiciousness));
