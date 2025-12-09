@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_weapon_functions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_weapon_functions",
+  "parent":{
+    "name":"Weapons",
+    "path":"folders/Objects/Weapons.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
