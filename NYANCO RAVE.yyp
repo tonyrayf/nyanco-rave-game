@@ -59,6 +59,7 @@
     {"id":{"name":"obj_block_func","path":"objects/obj_block_func/obj_block_func.yy",},},
     {"id":{"name":"obj_block_solid","path":"objects/obj_block_solid/obj_block_solid.yy",},},
     {"id":{"name":"obj_bullet","path":"objects/obj_bullet/obj_bullet.yy",},},
+    {"id":{"name":"obj_check_hitbox","path":"objects/obj_check_hitbox/obj_check_hitbox.yy",},},
     {"id":{"name":"obj_enemy","path":"objects/obj_enemy/obj_enemy.yy",},},
     {"id":{"name":"obj_fade","path":"objects/obj_fade/obj_fade.yy",},},
     {"id":{"name":"obj_hitbox","path":"objects/obj_hitbox/obj_hitbox.yy",},},
@@ -94,6 +95,7 @@
     {"id":{"name":"spr_ar_bullet","path":"sprites/spr_ar_bullet/spr_ar_bullet.yy",},},
     {"id":{"name":"spr_block_func","path":"sprites/spr_block_func/spr_block_func.yy",},},
     {"id":{"name":"spr_bullet_trail","path":"sprites/spr_bullet_trail/spr_bullet_trail.yy",},},
+    {"id":{"name":"spr_check_hitbox","path":"sprites/spr_check_hitbox/spr_check_hitbox.yy",},},
     {"id":{"name":"spr_cursor","path":"sprites/spr_cursor/spr_cursor.yy",},},
     {"id":{"name":"spr_enemy_body","path":"sprites/spr_enemy_body/spr_enemy_body.yy",},},
     {"id":{"name":"spr_enemy","path":"sprites/spr_enemy/spr_enemy.yy",},},
@@ -109,8 +111,8 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
-    {"roomId":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
+    {"roomId":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

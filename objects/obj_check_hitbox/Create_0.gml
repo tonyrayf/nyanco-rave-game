@@ -4,4 +4,4 @@ if (is_struct(sequence_instance))//if created in sequence, write down it's ID
 } else {
 	parent_sequenceID = undefined;
 }
-hp = 100;
+is_obj_in_zone = false
