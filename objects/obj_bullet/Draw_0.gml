@@ -9,7 +9,7 @@ repeat (floor(speed))
 	var _y = y + sprite_width * sin(dir) * i;
 	
 	if (sign(hspeed) == sign(_x - xstart) and sign(vspeed) == sign(_y - ystart))
-		draw_sprite_ext(spr_bullet_trail, 0, _x, _y, 1, 1, image_angle, c_white, 0.5 * (1 - i / floor(speed)));
+		draw_sprite_ext(spr_bullet_trail, 0, _x, _y, 1, 1, image_angle, image_blend, 0.5 * (1 - i / floor(speed)));
 	i += 1;
 }
 

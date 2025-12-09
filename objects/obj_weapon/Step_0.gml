@@ -29,7 +29,7 @@ if (alarm_get(0) == -1 and current_ammo > 0 and not is_reloading)
 		var _s = self;
 		repeat (current_weapon.shells_in_shot)
 		{
-			with (instance_create_layer(obj_player.x, obj_player.y, obj_player.layer, obj_bullet))
+			with (instance_create_layer(obj_player.x, obj_player.y  - 20, obj_player.layer, obj_bullet))
 			{
 				// find direction spread in degrees from triangle lengths
 				var spread_dir = arctan(_s.current_spread / _s.current_weapon.range) * DEG_PER_RAD;
@@ -39,12 +39,17 @@ if (alarm_get(0) == -1 and current_ammo > 0 and not is_reloading)
 				// velocity spread is in percents
 				var vel = _s.current_weapon.velocity;
 				var vel_spread = _s.current_weapon.velocity_spread / 100;
-				speed = random_range(vel * (1 - vel_spread), vel * (1 + vel_spread));
+				start_speed = random_range(vel * (1 - vel_spread), vel * (1 + vel_spread));
+				speed = start_speed;
 				
 				image_angle = direction;
 				sprite_index = _s.current_weapon.shell_sprite;
 				
-				damage = _s.current_weapon.damage;
+				start_damage = _s.current_weapon.damage;
+				damage = start_damage;
+				
+				if (variable_struct_exists(_s.current_weapon, "effective_range"))
+					effective_range = _s.current_weapon.effective_range;
 				
 				if (variable_struct_exists(_s.current_weapon, "penetrate_probability"))
 					penetrate_probability = _s.current_weapon.penetrate_probability;

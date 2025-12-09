@@ -1,4 +1,4 @@
-hp = 150;
+hp = 100;
 
 speed_x = 0;
 speed_y = 0;

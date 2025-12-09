@@ -1,3 +1,13 @@
+if (effective_range != -1)
+{
+	damage = start_damage * (1 - power(point_distance(xstart, ystart, x, y) / effective_range, 2));
+	damage = clamp(damage, 0, start_damage);
+	
+	// Make bullet more red as damage decrease
+	var blend = 255 * damage / start_damage
+	image_blend = make_colour_rgb(255, blend, blend);
+}
+
 var i = 0;
 repeat (speed)
 {
@@ -24,7 +34,7 @@ repeat (speed)
 			x += hspeed;
 			y += vspeed;
 			
-			while (place_meeting(x, y, obj_hitbox))
+			while (place_meeting(x, y, inst))
 			{
 				x += cosine;
 				y += sine;

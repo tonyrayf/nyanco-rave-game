@@ -11,7 +11,7 @@ is_reloading = false;
 #region Weapons
 
 pistol = {
-	damage : 40,
+	damage : 30,
 	fire_rate : 1000,			// rounds/minute
 	capacity : 8,				// max ammo
 	reload_time : 0.7,			// in seconds
@@ -30,12 +30,10 @@ pistol = {
 	},
 	shell_sprite : spr_9mm_bullet,
 	shake_amplitude : 2,
-	penetrate_probability : 0,		// in percents
-	penetrate_decrease_multi : 1,	// after every penetration prob. decreases
 }
 
 smg = {
-	damage : 20,
+	damage : 25,
 	fire_rate : 600,
 	capacity : 40,
 	reload_time : 1.4,
@@ -57,7 +55,7 @@ smg = {
 }
 
 auto_rifle = {
-	damage : 50,
+	damage : 40,
 	fire_rate : 400,
 	capacity : 30,
 	reload_time : 1.7,
@@ -99,12 +97,12 @@ sniper_rifle = {
 	},
 	shell_sprite : spr_lapua_bullet,
 	shake_amplitude : 4,
-	penetrate_probability : 80,
-	penetrate_decrease_multi : 1.25,
+	penetrate_probability : 80,			// in percents
+	penetrate_decrease_multi : 1.25,	// after every penetration prob. decreases
 }
 
 shotgun = {
-	damage : 20,
+	damage : 10,
 	fire_rate : 80,
 	capacity : 7,
 	reload_time : 2.2,
@@ -123,10 +121,11 @@ shotgun = {
 	},
 	shell_sprite : spr_pellete,
 	shake_amplitude : 5,
+	effective_range : 2500,
 }
 
 auto_shotgun = {
-	damage : 20,
+	damage : 7,
 	fire_rate : 200,
 	capacity : 13,
 	reload_time : 1.7,
@@ -145,6 +144,7 @@ auto_shotgun = {
 	},
 	shell_sprite : spr_pellete,
 	shake_amplitude : 5,
+	effective_range : 2500,
 }
 
 admin_gun = {
@@ -192,8 +192,6 @@ admin_gun2 = {
 	shake_amplitude : 0,
 	penetrate_probability : 100,
 }
-
-	
 
 #endregion
 
