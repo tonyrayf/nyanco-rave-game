@@ -45,6 +45,12 @@ if (alarm_get(0) == -1 and current_ammo > 0 and not is_reloading)
 				sprite_index = _s.current_weapon.shell_sprite;
 				
 				damage = _s.current_weapon.damage;
+				
+				if (variable_struct_exists(_s.current_weapon, "penetrate_probability"))
+					penetrate_probability = _s.current_weapon.penetrate_probability;
+				
+				if (variable_struct_exists(_s.current_weapon, "penetrate_decrease_multi"))
+					penetrate_decrease_multi = _s.current_weapon.penetrate_decrease_multi;
 			}
 		}
 		

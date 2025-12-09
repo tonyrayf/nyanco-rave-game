@@ -30,6 +30,8 @@ pistol = {
 	},
 	shell_sprite : spr_9mm_bullet,
 	shake_amplitude : 2,
+	penetrate_probability : 0,		// in percents
+	penetrate_decrease_multi : 1,	// after every penetration prob. decreases
 }
 
 smg = {
@@ -74,6 +76,7 @@ auto_rifle = {
 	},
 	shell_sprite : spr_ar_bullet,
 	shake_amplitude : 3,
+	penetrate_probability : 20,
 }
 
 sniper_rifle = {
@@ -96,6 +99,8 @@ sniper_rifle = {
 	},
 	shell_sprite : spr_lapua_bullet,
 	shake_amplitude : 4,
+	penetrate_probability : 80,
+	penetrate_decrease_multi : 1.25,
 }
 
 shotgun = {
@@ -162,6 +167,7 @@ admin_gun = {
 	},
 	shell_sprite : spr_pellete,
 	shake_amplitude : 5,
+	penetrate_probability : 100,
 }
 
 admin_gun2 = {
@@ -184,6 +190,7 @@ admin_gun2 = {
 	},
 	shell_sprite : spr_lapua_bullet,
 	shake_amplitude : 0,
+	penetrate_probability : 100,
 }
 
 	
