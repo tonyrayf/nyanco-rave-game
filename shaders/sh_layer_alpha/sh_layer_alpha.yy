@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"sh_layer_alpha",
+  "name":"sh_layer_alpha",
+  "parent":{
+    "name":"Shaders",
+    "path":"folders/Shaders.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

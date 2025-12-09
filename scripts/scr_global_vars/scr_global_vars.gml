@@ -1,0 +1,1 @@
+global.solid_objects = [obj_block_solid, obj_hitbox];

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_camera_functions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_camera_functions",
+  "parent":{
+    "name":"Camera",
+    "path":"folders/General/Camera.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
