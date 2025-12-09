@@ -1,3 +1,7 @@
+if (!sequence_exists(seq)){
+	instance_destroy();
+}
+
 #region X
 
 var step_over = false;  //step over small ledges
