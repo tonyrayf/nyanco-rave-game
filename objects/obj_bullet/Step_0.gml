@@ -18,7 +18,7 @@ repeat (speed)
 	var inst = instance_place(x + delta_x, y + delta_y, obj_hitbox)
 	if (inst != noone)
 	{
-		audio_play_sound(inst.hp > damage ? snd_hit_marker : snd_hit_marker_kill, 100, false);
+		audio_play_sound(snd_hit_marker, 100, false);
 		
 		inst.hp -= damage;
 		if (penetrate_probability == 0 or random(1) > penetrate_probability / 100)

@@ -45,6 +45,7 @@
   ],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"Celestia.png","CopyToMask":-1,"filePath":"datafiles","name":"Celestia.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"raindrop.mp4","CopyToMask":-1,"filePath":"datafiles","name":"raindrop.mp4","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,
   "LibraryEmitters":[],
@@ -91,6 +92,7 @@
     {"id":{"name":"scr_sprite_functions","path":"scripts/scr_sprite_functions/scr_sprite_functions.yy",},},
     {"id":{"name":"scr_weapon_functions","path":"scripts/scr_weapon_functions/scr_weapon_functions.yy",},},
     {"id":{"name":"sq_enemy_regular","path":"sequences/sq_enemy_regular/sq_enemy_regular.yy",},},
+    {"id":{"name":"sq_menu_appear","path":"sequences/sq_menu_appear/sq_menu_appear.yy",},},
     {"id":{"name":"sh_layer_alpha","path":"shaders/sh_layer_alpha/sh_layer_alpha.yy",},},
     {"id":{"name":"Shader1","path":"shaders/Shader1/Shader1.yy",},},
     {"id":{"name":"snd_hit_marker_kill","path":"sounds/snd_hit_marker_kill/snd_hit_marker_kill.yy",},},
@@ -99,6 +101,8 @@
     {"id":{"name":"snd_shotgun","path":"sounds/snd_shotgun/snd_shotgun.yy",},},
     {"id":{"name":"snd_sniper","path":"sounds/snd_sniper/snd_sniper.yy",},},
     {"id":{"name":"Celestia","path":"sprites/Celestia/Celestia.yy",},},
+    {"id":{"name":"Logo","path":"sprites/Logo/Logo.yy",},},
+    {"id":{"name":"MenuBG","path":"sprites/MenuBG/MenuBG.yy",},},
     {"id":{"name":"Remeni","path":"sprites/Remeni/Remeni.yy",},},
     {"id":{"name":"spr_9mm_bullet","path":"sprites/spr_9mm_bullet/spr_9mm_bullet.yy",},},
     {"id":{"name":"spr_ar_bullet","path":"sprites/spr_ar_bullet/spr_ar_bullet.yy",},},
@@ -125,8 +129,8 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
-    {"roomId":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
+    {"roomId":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

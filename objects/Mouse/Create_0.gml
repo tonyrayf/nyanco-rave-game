@@ -3,5 +3,4 @@
 speed_x = 0;
 speed_y = 0;
 
-last_x = xstart;
-last_y = xstart;
+window_mouse_set_locked(true);

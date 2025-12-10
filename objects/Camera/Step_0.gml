@@ -40,7 +40,7 @@ if (shake_active) // Shake
 
 #region Movement
 
-if (follow_player and instance_exists(obj_player))
+if (follow_player and instance_exists(obj_player) and instance_exists(obj_shoot_area))
 {
 	next_x = obj_player.x + offset_x * obj_player.last_direction_x;
 	next_y = obj_player.y + offset_y;

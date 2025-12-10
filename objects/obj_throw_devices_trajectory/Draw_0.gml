@@ -3,7 +3,7 @@ draw_set_alpha(0.8);
 
 var sight_x = obj_player.x;
 var sight_y = obj_player.y - 20;
-throw_direction = point_direction(sight_x, sight_y, Mouse.x, Mouse.y);
+throw_direction = point_direction(sight_x, sight_y, x, y);
 var dir = degtorad(throw_direction);
 
 // Some trigonometric manipulations

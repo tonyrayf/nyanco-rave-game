@@ -42,15 +42,44 @@ if (place_meeting(x + speed_x, y, global.solid_objects)) //Collision check
 }
 
 
-// Run
+#region States
+
+if (Input.key_crouch_press and place_meeting(x, y + 1, global.solid_objects))
+{
+	current_state = current_state == player_states.walk ? player_states.crouch : player_states.walk;
+}
+
 if (Input.key_run and place_meeting(x, y + 1, global.solid_objects))
 {
-	speed_x = clamp(speed_x, top_speed_x_left * run_multiplier, top_speed_x_right * run_multiplier);
+	current_state = player_states.run;
 }
-else
+if (Input.key_run_release)
 {
-	speed_x = clamp(speed_x, top_speed_x_left, top_speed_x_right);
+	current_state = player_states.walk;
 }
+
+switch (current_state)
+{
+	case player_states.walk: {
+		speed_x = clamp(speed_x, top_speed_x_left, top_speed_x_right);
+		image_yscale = 1;
+		break;
+	}
+	
+	case player_states.run: {
+		speed_x = clamp(speed_x, top_speed_x_left * run_multi, top_speed_x_right * run_multi);
+		image_yscale = 0.9;
+		break;
+	}
+	
+	case player_states.crouch: {
+		speed_x = clamp(speed_x, top_speed_x_left * crouch_multi, top_speed_x_right * crouch_multi);
+		image_yscale = 0.5;
+		break;
+	}
+}
+
+#endregion
 
 
 x += speed_x;

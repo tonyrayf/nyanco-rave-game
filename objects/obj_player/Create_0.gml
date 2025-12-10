@@ -18,7 +18,15 @@ top_speed_x_left = -top_speed_x_def;
 acceleration_x = 1;
 deceleration_x = 1.25;
 
-run_multiplier = 1.25;
+enum player_states {
+	walk,
+	crouch,
+	run
+}
+current_state = player_states.walk;
+
+run_multi = 1.25;
+crouch_multi = 0.75;
 
 
 //Y

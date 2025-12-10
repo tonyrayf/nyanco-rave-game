@@ -54,8 +54,9 @@ layer_sequence_x(seq, x);
 layer_sequence_y(seq, y);
 
 if(setup){
-	enemy_FOV = get_inst_from_seq(seq,obj_check_hitbox);
 	setup = false;
+	
+	enemy_FOV = get_inst_from_seq(seq, obj_check_hitbox);
 }
 
 switch current_state{
