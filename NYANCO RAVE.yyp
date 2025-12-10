@@ -81,6 +81,7 @@
     {"id":{"name":"obj_weapon","path":"objects/obj_weapon/obj_weapon.yy",},},
     {"id":{"name":"Sound","path":"objects/Sound/Sound.yy",},},
     {"id":{"name":"part_explosion","path":"particles/part_explosion/part_explosion.yy",},},
+    {"id":{"name":"path_enemy_test_1","path":"paths/path_enemy_test_1/path_enemy_test_1.yy",},},
     {"id":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
     {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"id":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
