@@ -148,6 +148,8 @@
     {"id":{"name":"spr_solid","path":"sprites/spr_solid/spr_solid.yy",},},
     {"id":{"name":"spr_spr_left","path":"sprites/spr_spr_left/spr_spr_left.yy",},},
     {"id":{"name":"spr_spr_right","path":"sprites/spr_spr_right/spr_spr_right.yy",},},
+    {"id":{"name":"spr_stealth_bar_fill","path":"sprites/spr_stealth_bar_fill/spr_stealth_bar_fill.yy",},},
+    {"id":{"name":"spr_stealth_bar","path":"sprites/spr_stealth_bar/spr_stealth_bar.yy",},},
     {"id":{"name":"spr","path":"sprites/spr/spr.yy",},},
   ],
   "resourceType":"GMProject",
