@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_instance_DOSMTH_objects",
+  "%Name":"scr_instance_DOSMTH_functions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_instance_DOSMTH_objects",
+  "name":"scr_instance_DOSMTH_functions",
   "parent":{
     "name":"Functions",
     "path":"folders/Scripts/Functions.yy",

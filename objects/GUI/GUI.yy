@@ -1,22 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_throw_devices_trajectory",
+  "%Name":"GUI",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_throw_devices_trajectory",
+  "name":"GUI",
   "overriddenProperties":[],
   "parent":{
-    "name":"Devices",
-    "path":"folders/Objects/Devices.yy",
+    "name":"General",
+    "path":"folders/General.yy",
   },
-  "parentObjectId":{
-    "name":"obj_circular_cursor",
-    "path":"objects/obj_circular_cursor/obj_circular_cursor.yy",
-  },
-  "persistent":false,
+  "parentObjectId":null,
+  "persistent":true,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
   "physicsFriction":0.2,
@@ -33,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_cursor",
-    "path":"sprites/spr_cursor/spr_cursor.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

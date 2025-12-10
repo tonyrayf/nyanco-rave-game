@@ -21,8 +21,10 @@ var sim_y = sight_y;
 var sim_speed_x = throw_speed * dir_cos;
 var sim_speed_y = throw_speed * dir_sin;
 
-repeat (50)
+repeat (150)
 {
+	if (instance_place(sim_x, sim_y, global.solid_objects) != noone) break;
+	
     sim_speed_y += throw_gravity;
     sim_x += sim_speed_x;
     sim_y += sim_speed_y;

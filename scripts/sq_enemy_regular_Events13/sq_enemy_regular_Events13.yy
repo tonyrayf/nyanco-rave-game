@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"sq_enemy_regular_Events13",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"sq_enemy_regular_Events13",
+  "parent":{
+    "name":"Sequences",
+    "path":"folders/Sequences.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

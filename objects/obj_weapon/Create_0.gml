@@ -80,7 +80,7 @@ auto_rifle = {
 }
 
 sniper_rifle = {
-	damage : 150,
+	damage : 100,
 	fire_rate : 60,
 	capacity : 5,
 	reload_time : 2.2,

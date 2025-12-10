@@ -56,7 +56,14 @@ layer_sequence_y(seq, y);
 if(setup){
 	setup = false;
 	
+	var head = instance_create_layer(0, 0, layer, obj_hitbox);
+	head.hp = hp;
+	
 	enemy_FOV = get_inst_from_seq(seq, obj_check_hitbox);
+	
+	get_inst_from_seq_by_name(seq, "body").hp = hp;
+	get_inst_from_seq_by_name(seq, "head").hp = hp * 0.3;
+	get_inst_from_seq_by_name(seq, "legs").hp = hp * 1.25;
 }
 
 switch current_state{
@@ -94,4 +101,4 @@ switch current_state{
 	break;
 }
 
-show_debug_message(string(current_state)+"  "+string(suspiciousness));
+//show_debug_message(string(current_state)+"  "+string(suspiciousness));

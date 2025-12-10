@@ -12,7 +12,7 @@ if (last_device != current_device)
 	current_number = current_device.capacity;
 }
 
-if (alarm_get(0) == -1)
+if (alarm_get(0) == -1 and current_number > 0)
 {
 	current_device.handle_device_interaction();
 }
