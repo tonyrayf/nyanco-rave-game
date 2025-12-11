@@ -2,7 +2,7 @@ if (setup)
 {
 	setup = false;
 	
-	current_device = frag_grenade;	
+	current_device = impact_grenade;	
 }
 
 if (last_device != current_device)

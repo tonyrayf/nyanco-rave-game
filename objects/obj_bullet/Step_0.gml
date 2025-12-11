@@ -18,7 +18,7 @@ repeat (speed)
 	var inst = instance_place(x + delta_x, y + delta_y, [obj_block_solid, obj_hitbox, obj_frag_grenade]);
 	if (inst != noone)
 	{
-		collision_func();
+		collision_func(inst, i, sine, cosine);
 		
 		break;
 	}

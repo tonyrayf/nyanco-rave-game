@@ -9,6 +9,8 @@ current_ammo = 0;
 current_spread = 0;
 is_reloading = false;
 
+sight_x = 0;
+sight_y = 0;
 
 #region Weapons
 
@@ -30,7 +32,11 @@ pistol = {
 		sound : snd_pistol,
 		pitch : 1
 	},
+	
 	shell_sprite : spr_9mm_bullet,
+	weapon_sprite_right : spr_kilo_right,
+	weapon_sprite_left : spr_kilo_left,
+	
 	shake_amplitude : 2,
 }
 
@@ -49,10 +55,14 @@ smg = {
 	spread_lerp : 0.2,
 	range : 500,
 	shot_sound : {
-		sound : snd_pistol,
-		pitch : 1.1
+		sound : snd_smg,
+		pitch : 1
 	},
+	
 	shell_sprite : spr_9mm_bullet,
+	weapon_sprite_right : spr_kilo_right,
+	weapon_sprite_left : spr_kilo_left,
+	
 	shake_amplitude : 2,
 }
 
@@ -74,7 +84,11 @@ auto_rifle = {
 		sound : snd_pistol,
 		pitch : 0.9
 	},
+	
 	shell_sprite : spr_ar_bullet,
+	weapon_sprite_right : spr_kilo_right,
+	weapon_sprite_left : spr_kilo_left,
+	
 	shake_amplitude : 3,
 	penetrate_probability : 20,
 }
@@ -97,7 +111,11 @@ sniper_rifle = {
 		sound : snd_sniper,
 		pitch : 1
 	},
+	
 	shell_sprite : spr_lapua_bullet,
+	weapon_sprite_right : spr_spr_right,
+	weapon_sprite_left : spr_spr_left,
+	
 	shake_amplitude : 4,
 	penetrate_probability : 80,			// in percents
 	penetrate_decrease_multi : 1.25,	// after every penetration prob. decreases
@@ -121,7 +139,11 @@ shotgun = {
 		sound : snd_shotgun,
 		pitch : 1
 	},
+	
 	shell_sprite : spr_pellete,
+	weapon_sprite_right : spr_kilo_right,
+	weapon_sprite_left : spr_kilo_left,
+	
 	shake_amplitude : 5,
 	effective_range : 2500,
 }
@@ -144,7 +166,11 @@ auto_shotgun = {
 		sound : snd_shotgun,
 		pitch : 1
 	},
+	
 	shell_sprite : spr_pellete,
+	weapon_sprite_right : spr_kilo_right,
+	weapon_sprite_left : spr_kilo_left,
+	
 	shake_amplitude : 5,
 	effective_range : 2500,
 }
@@ -190,13 +216,21 @@ admin_gun2 = {
 		sound : snd_shotgun,
 		pitch : 1
 	},
+	
 	shell_sprite : spr_lapua_bullet,
+	weapon_sprite_right : spr_kilo_right,
+	weapon_sprite_left : spr_kilo_left,
+	
 	shake_amplitude : 0,
 	penetrate_probability : 100,
+	current_shell : obj_ricochet_bullet,
 }
 
 #endregion
 
+// distance from hand to barrel
+barrel_dist = abs(sprite_width - sprite_get_xoffset(sprite_index) * image_xscale);
+origin_offset = 30;
 
 draw_setup = true;
 

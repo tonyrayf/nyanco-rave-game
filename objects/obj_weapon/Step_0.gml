@@ -1,5 +1,9 @@
 if (!active) exit;
 
+var dir = point_direction(x, y, obj_shoot_area.x, obj_shoot_area.y);
+
+#region Weapon action
+
 if (setup)
 {
 	setup = false;
@@ -13,6 +17,8 @@ if (last_weapon != current_weapon)
 	
 	current_ammo = current_weapon.capacity;
 	current_spread = current_weapon.min_spread;
+	
+	barrel_dist = abs(sprite_width - sprite_get_xoffset(sprite_index) * image_xscale);
 }
 
 // smooth spread decrease
@@ -31,7 +37,9 @@ if (alarm_get(0) == -1 and current_ammo > 0 and not is_reloading)
 		var _s = self;
 		repeat (current_weapon.shells_in_shot)
 		{
-			with (instance_create_layer(obj_player.x, obj_player.y  - 20, obj_player.layer, obj_bullet))
+			var shell = !variable_struct_exists(current_weapon, "current_shell") ? obj_bullet : current_weapon.current_shell;
+			
+			with (instance_create_layer(sight_x, sight_y, obj_player.layer, shell))
 			{
 				// find direction spread in degrees from triangle lengths
 				var spread_dir = arctan(_s.current_spread / _s.current_weapon.range) * DEG_PER_RAD;
@@ -61,11 +69,19 @@ if (alarm_get(0) == -1 and current_ammo > 0 and not is_reloading)
 			}
 		}
 		
+		with (instance_create_layer(x + barrel_dist / 2 * cos(degtorad(dir)), y - barrel_dist / 2 * sin(degtorad(dir)), layer, obj_cartridge))
+		{
+			speed_x = random_range(-3, 3);
+			speed_y = 2.5;
+		}
+		
 		current_ammo -= 1;
 		current_spread += current_weapon.spread_jump;
 		
 		do_camera_shake(current_weapon.shake_amplitude, 0.3);
+		
 		audio_play_sound(current_weapon.shot_sound.sound, 100, false, 1, 0, current_weapon.shot_sound.pitch);
+		audio_play_sound(snd_weap, 100, false, 1);
 	}
 }
 
@@ -79,3 +95,19 @@ or (current_ammo <= 0 and not is_reloading)
 	
 	alarm_set(1, current_weapon.reload_time * game_get_speed(gamespeed_fps));
 }
+
+#endregion
+
+#region Weapon view
+
+sight_x = x + barrel_dist * cos(degtorad(dir));
+sight_y = y - barrel_dist * sin(degtorad(dir));
+
+x = obj_shoot_area.direction_x == RIGHT ? obj_player.bbox_right - origin_offset : obj_player.bbox_left + origin_offset;
+y = obj_player.bbox_top + 60;
+
+image_angle = dir - (obj_shoot_area.direction_x == RIGHT ? 0 : 180) - camera_get_view_angle(view_camera[0]) * 2;
+
+sprite_index = obj_shoot_area.direction_x == RIGHT ? current_weapon.weapon_sprite_right : current_weapon.weapon_sprite_left;
+
+#endregion

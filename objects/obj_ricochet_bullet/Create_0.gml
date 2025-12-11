@@ -1,19 +1,32 @@
-start_speed = 0;
+event_inherited();
 
-damage = 0;
-start_damage = 0;
-
-effective_range = -1;
-
-penetrate_probability = 0;
-penetrate_decrease_multi = 1;
+bounces_left = 2;
 
 collision_func = function(inst, i, sine, cosine)
 {
 	var obj = inst.object_index
 	if (obj == obj_block_solid)
 	{
-		instance_destroy();
+		if (bounces_left <= 0)
+		{
+			instance_destroy();
+			return;
+		}
+		--bounces_left;
+		
+		var _i = 0;
+		while (!place_meeting(x + cosine, y + sine, inst))
+		{
+			x += cosine;
+			y += sine;
+			
+			if (++_i > i) break;
+		}
+		
+		// я даже незнаю почему это работает
+		direction += 2 * abs((inst.image_angle + (direction < inst.image_angle ? 0 : 360)) - direction);
+		
+		image_angle = direction;
 	}
 	else if (obj == obj_hitbox or object_get_parent(obj) == obj_hitbox)
 	{
@@ -45,3 +58,6 @@ collision_func = function(inst, i, sine, cosine)
 		inst.explode = true;
 	}	
 }
+
+_x = [];
+_y = [];

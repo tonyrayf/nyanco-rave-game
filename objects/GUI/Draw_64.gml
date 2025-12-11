@@ -8,7 +8,7 @@ if (draw_setup)
 
 if (instance_exists(obj_weapon))
 {
-	if (obj_weapon.alarm[0] == -1)
+	if (obj_weapon.alarm[1] == -1)
 	{
 		image_angle = 0;
 		draw_text_transformed(ammo_x, ammo_y, $"{obj_weapon.current_ammo}/{obj_weapon.current_weapon.capacity}", 2.2, 2.2, 0);

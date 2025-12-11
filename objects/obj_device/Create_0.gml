@@ -5,7 +5,7 @@ last_device = {};
 
 current_number = 0;
 
-frag_grenade = {
+impact_grenade = {
 	// Общие параметры
 	cooldown : 3,    // в секундах
     capacity : 4,
@@ -47,7 +47,7 @@ frag_grenade = {
 			trajectory_inst = noone;
 			
 			var _s = self;
-			with (instance_create_layer(obj_player.x, obj_player.y - 20, obj_player.layer, obj_frag_grenade))
+			with (instance_create_layer(obj_player.x, obj_player.y - 20, obj_player.layer, grenade))
 			{
 				direction = _s.throw_direction;
 				speed = _s.throw_speed;
@@ -61,4 +61,5 @@ frag_grenade = {
 	throw_speed : 22.5,
 	throw_gravity : 0.5,
 	throw_direction : 0,
+	grenade : obj_impact_grenade
 }
