@@ -64,6 +64,10 @@ if(setup){
 	get_inst_from_seq_by_name(seq, "body").hp = hp;
 	get_inst_from_seq_by_name(seq, "head").hp = hp * 0.3;
 	get_inst_from_seq_by_name(seq, "legs").hp = hp * 1.25;
+	
+	if(name!="default_name" and ds_map_exists(global.paths_map,name)){
+		path_start(global.paths_map[?name],speed_idle,path_action_reverse,0);
+	}
 }
 
 switch current_state{
@@ -71,9 +75,10 @@ switch current_state{
 		if(enemy_FOV.is_object_in_zone){
 			suspiciousness++;
 			if(suspiciousness>=idle_to_search){
-				current_state=1;
+				current_state=states.Search;
 				suspiciousness=0;
 				alarm[0] = search_to_idle;
+				self.path_speed = speed_search;
 			}
 		} else {
 			if(suspiciousness>0){
@@ -90,6 +95,7 @@ switch current_state{
 				suspiciousness=0;
 				current_state=states.Detected;
 				alarm[0] = -1;
+				self.path_speed = speed_detected;
 			}
 		} else {
 			if(suspiciousness>0){
@@ -100,5 +106,3 @@ switch current_state{
 		}
 	break;
 }
-
-//show_debug_message(string(current_state)+"  "+string(suspiciousness));

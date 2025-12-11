@@ -1,4 +1,7 @@
 hp = 100;
+speed_idle = 4;
+speed_search = 6;
+speed_detected = 10;
 
 speed_x = 0;
 speed_y = 0;
@@ -6,6 +9,7 @@ speed_y = 0;
 acceleration_g = 1;
 
 setup = true;
+name = "default_name";
 enum states {
 	Idle,
 	Search,
