@@ -69,7 +69,8 @@ if (alarm_get(0) == -1 and current_ammo > 0 and not is_reloading)
 			}
 		}
 		
-		with (instance_create_layer(x + barrel_dist / 2 * cos(degtorad(dir)), y - barrel_dist / 2 * sin(degtorad(dir)), layer, obj_cartridge))
+		// eject casing
+		with (instance_create_depth(x + barrel_dist / 2 * cos(degtorad(dir)), y - barrel_dist / 2 * sin(degtorad(dir)), depth - 1 , obj_casing))
 		{
 			speed_x = random_range(-3, 3);
 			speed_y = 2.5;
@@ -80,8 +81,9 @@ if (alarm_get(0) == -1 and current_ammo > 0 and not is_reloading)
 		
 		do_camera_shake(current_weapon.shake_amplitude, 0.3);
 		
-		audio_play_sound(current_weapon.shot_sound.sound, 100, false, 1, 0, current_weapon.shot_sound.pitch);
-		audio_play_sound(snd_weap, 100, false, 1);
+		var snd = current_weapon.shot_sound;
+		audio_play_sound(snd.sound, 100, false, snd.gain, 0, snd.pitch);
+		audio_play_sound(snd_weap, 100, false, 0.5);
 	}
 }
 

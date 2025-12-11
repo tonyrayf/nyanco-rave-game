@@ -30,7 +30,8 @@ pistol = {
 	range : 500,				// in pixels
 	shot_sound : {
 		sound : snd_pistol,
-		pitch : 1
+		pitch : 1,
+		gain : 1
 	},
 	
 	shell_sprite : spr_9mm_bullet,
@@ -56,7 +57,8 @@ smg = {
 	range : 500,
 	shot_sound : {
 		sound : snd_smg,
-		pitch : 1
+		pitch : 1,
+		gain : 0.7
 	},
 	
 	shell_sprite : spr_9mm_bullet,
@@ -82,7 +84,8 @@ auto_rifle = {
 	range : 700,
 	shot_sound : {
 		sound : snd_pistol,
-		pitch : 0.9
+		pitch : 0.9,
+		gain : 1
 	},
 	
 	shell_sprite : spr_ar_bullet,
@@ -109,7 +112,8 @@ sniper_rifle = {
 	range : 900,
 	shot_sound : {
 		sound : snd_sniper,
-		pitch : 1
+		pitch : 1,
+		gain : 1
 	},
 	
 	shell_sprite : spr_lapua_bullet,
@@ -137,7 +141,8 @@ shotgun = {
 	range : 400,
 	shot_sound : {
 		sound : snd_shotgun,
-		pitch : 1
+		pitch : 1,
+		gain : 1
 	},
 	
 	shell_sprite : spr_pellete,
@@ -164,7 +169,8 @@ auto_shotgun = {
 	range : 300,
 	shot_sound : {
 		sound : snd_shotgun,
-		pitch : 1
+		pitch : 1,
+		gain : 1
 	},
 	
 	shell_sprite : spr_pellete,
@@ -214,7 +220,8 @@ admin_gun2 = {
 	range : 1000,
 	shot_sound : {
 		sound : snd_shotgun,
-		pitch : 1
+		pitch : 1,
+		gain : 1
 	},
 	
 	shell_sprite : spr_lapua_bullet,
