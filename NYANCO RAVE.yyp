@@ -135,6 +135,8 @@
     {"id":{"name":"spr_frag_grenade","path":"sprites/spr_frag_grenade/spr_frag_grenade.yy",},},
     {"id":{"name":"spr_htibox","path":"sprites/spr_htibox/spr_htibox.yy",},},
     {"id":{"name":"spr_idle","path":"sprites/spr_idle/spr_idle.yy",},},
+    {"id":{"name":"spr_iso_left","path":"sprites/spr_iso_left/spr_iso_left.yy",},},
+    {"id":{"name":"spr_iso_right","path":"sprites/spr_iso_right/spr_iso_right.yy",},},
     {"id":{"name":"spr_kilo_left","path":"sprites/spr_kilo_left/spr_kilo_left.yy",},},
     {"id":{"name":"spr_kilo_right","path":"sprites/spr_kilo_right/spr_kilo_right.yy",},},
     {"id":{"name":"spr_lapua_bullet","path":"sprites/spr_lapua_bullet/spr_lapua_bullet.yy",},},

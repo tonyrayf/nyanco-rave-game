@@ -58,12 +58,12 @@ smg = {
 	shot_sound : {
 		sound : snd_smg,
 		pitch : 1,
-		gain : 0.7
+		gain : 0.6
 	},
 	
 	shell_sprite : spr_9mm_bullet,
-	weapon_sprite_right : spr_kilo_right,
-	weapon_sprite_left : spr_kilo_left,
+	weapon_sprite_right : spr_iso_right,
+	weapon_sprite_left : spr_iso_left,
 	
 	shake_amplitude : 2,
 }

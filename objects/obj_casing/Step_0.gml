@@ -20,7 +20,7 @@ if (place_meeting(x, y + speed_y, global.solid_objects))
 	if (!fallen)
 	{
 		fallen = true;
-		audio_play_sound([snd_casing_eject_1, snd_casing_eject_2, snd_casing_eject_3, snd_casing_eject_4, snd_casing_eject_5][irandom(4)], 100, false, 0.3);
+		audio_play_sound([snd_casing_eject_1, snd_casing_eject_2, snd_casing_eject_3, snd_casing_eject_4, snd_casing_eject_5][irandom(4)], 100, false, 0.1);
 	}
 	
 	while (!place_meeting(x, y + sign(speed_y), global.solid_objects)) y += sign(speed_y);

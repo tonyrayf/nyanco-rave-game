@@ -18,7 +18,15 @@ if (last_weapon != current_weapon)
 	current_ammo = current_weapon.capacity;
 	current_spread = current_weapon.min_spread;
 	
+	sprite_index = current_weapon.weapon_sprite_right;
 	barrel_dist = abs(sprite_width - sprite_get_xoffset(sprite_index) * image_xscale);
+	
+	if (abs(x - obj_shoot_area.x) <= barrel_dist)
+	{
+		var length = (barrel_dist + 20);
+		obj_shoot_area.x = x + length * cos(degtorad(dir));
+		obj_shoot_area.y = y - length * sin(degtorad(dir));
+	}
 }
 
 // smooth spread decrease

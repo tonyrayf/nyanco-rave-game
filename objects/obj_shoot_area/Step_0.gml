@@ -9,9 +9,9 @@ x += speed_x;
 y += speed_y;
 
 // Switch direction
-if (abs(x - obj_player.x) < switch_distance)
+if (abs(x - obj_player.x) < obj_weapon.sprite_width)
 {
-	x -= 2 * switch_distance * dir;
+	x -= 2 * obj_weapon.sprite_width * dir;
 }
 
 var cam_x = Camera.x;
