@@ -1,3 +1,5 @@
+if (!instance_exists(obj_player)) exit;
+
 if (draw_setup)
 {
 	draw_setup = false;
@@ -35,3 +37,5 @@ if (instance_exists(obj_device) and variable_struct_exists(obj_device.current_de
 	image_angle = 0;
 	draw_text(device_x, device_y, $"{obj_device.current_device.current_number}/{obj_device.current_device.total_number}");
 }
+
+draw_text(hp_x, hp_y, obj_player.hp);

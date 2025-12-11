@@ -1,3 +1,5 @@
+if (!instance_exists(obj_player)) exit;
+
 angle = point_direction(obj_player.x, obj_player.y, x + Mouse.speed_x + obj_player.speed_x, y + Mouse.speed_y);
 
 if (angle > 360) angle -= 360;

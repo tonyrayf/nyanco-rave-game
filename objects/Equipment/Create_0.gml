@@ -296,7 +296,7 @@ impact_grenade = {
 			trajectory_inst = noone;
 			
 			var _s = self;
-			with (instance_create_layer(obj_player.x, obj_player.y - 20, obj_player.layer, grenade))
+			with (instance_create_layer(obj_player.x, obj_player.bbox_top + 60, obj_player.layer, grenade))
 			{
 				direction = _s.throw_direction;
 				speed = _s.throw_speed;

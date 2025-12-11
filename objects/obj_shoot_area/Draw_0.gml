@@ -1,4 +1,4 @@
-if (!active) exit;
+if (!active or !instance_exists(obj_player)) exit;
 
 draw_self();
 draw_set_color(c_white);

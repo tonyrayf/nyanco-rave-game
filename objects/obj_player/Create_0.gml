@@ -50,3 +50,5 @@ can_shoot = true;
 has_fallen = false;
 
 step_delay = 0.35; // in seconds
+
+hp = 100;

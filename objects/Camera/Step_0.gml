@@ -25,7 +25,7 @@ if (zoom_active)  // Zoom
 	camera_set_view_size(view_camera[0], half_view_width * 2, half_view_height * 2);
 }
 
-if (shake_active) // Shake
+if (shake_active and instance_exists(obj_player)) // Shake
 {
 	var current_amp = shake_amplitude * alarm_get(0) / (shake_duration * game_get_speed(gamespeed_fps));
 	var shoot_dir = sign(obj_shoot_area.x - obj_player.x);

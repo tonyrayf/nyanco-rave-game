@@ -57,7 +57,12 @@ collision_func = function(inst, i, sine, cosine)
 	else if (obj == obj_frag_grenade)
 	{
 		inst.explode = true;
-	}	
+	}
+	else if (obj == obj_player)
+	{
+		obj.hp -= damage;
+		instance_destroy();
+	}
 }
 
 trail_number = 5;

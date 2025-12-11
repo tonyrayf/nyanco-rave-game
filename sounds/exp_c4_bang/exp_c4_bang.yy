@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"exp_c4_bang.ogg",
-  "volume":1.0,
+  "volume":0.27,
 }

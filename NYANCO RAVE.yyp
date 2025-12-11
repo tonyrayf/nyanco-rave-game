@@ -79,6 +79,7 @@
     {"id":{"name":"obj_frag_grenade","path":"objects/obj_frag_grenade/obj_frag_grenade.yy",},},
     {"id":{"name":"obj_hitbox","path":"objects/obj_hitbox/obj_hitbox.yy",},},
     {"id":{"name":"obj_impact_grenade","path":"objects/obj_impact_grenade/obj_impact_grenade.yy",},},
+    {"id":{"name":"obj_lose","path":"objects/obj_lose/obj_lose.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_ricochet_bullet","path":"objects/obj_ricochet_bullet/obj_ricochet_bullet.yy",},},
     {"id":{"name":"obj_shoot_area","path":"objects/obj_shoot_area/obj_shoot_area.yy",},},

@@ -1,4 +1,4 @@
-if (!active) exit;
+if (!active or !instance_exists(obj_player)) exit;
 
 direction = point_direction(x, y, obj_shoot_area.x, obj_shoot_area.y) - camera_get_view_angle(view_camera[0]) * 2;
 dir_cos = cos(degtorad(direction));

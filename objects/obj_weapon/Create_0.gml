@@ -6,7 +6,7 @@ dir_sin = 0;
 current_weapon = variable_clone(Equipment.smg);
 last_weapon = {};
 
-first_weapon = current_weapon; first_w_mods = [Equipment.suppressor, Equipment.ricochet_ammo];
+first_weapon = current_weapon; first_w_mods = [Equipment.suppressor];
 second_weapon = variable_clone(Equipment.pistol); second_w_mods = [Equipment.suppressor];
 
 current_mods = first_w_mods;
