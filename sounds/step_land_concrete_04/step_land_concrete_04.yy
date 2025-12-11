@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"step_land_concrete_04",
+  "audioGroupId":{
+    "name":"audiogroup_step",
+    "path":"audiogroups/audiogroup_step",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.45451248,
+  "exportDir":"",
+  "name":"step_land_concrete_04",
+  "parent":{
+    "name":"Steps",
+    "path":"folders/Sounds/Steps.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"step_land_concrete_04.ogg",
+  "volume":1.0,
+}

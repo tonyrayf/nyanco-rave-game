@@ -25,8 +25,8 @@ enum player_states {
 }
 current_state = player_states.walk;
 
-run_multi = 1.25;
-crouch_multi = 0.75;
+run_multi = 1.35;
+crouch_multi = 0.7;
 
 
 //Y
@@ -44,3 +44,9 @@ can_decelerate = true;
 can_move = true;
 can_jump = true;
 can_shoot = true;
+
+
+// Sound
+has_fallen = false;
+
+step_delay = 0.35; // in seconds

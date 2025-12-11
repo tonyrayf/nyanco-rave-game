@@ -81,6 +81,15 @@ switch (current_state)
 
 #endregion
 
+if (direction_x != 0 and alarm_get(2) == -1)
+{
+	switch (current_state)
+	{
+		case player_states.walk:	alarm_set(2, step_delay * game_get_speed(gamespeed_fps)); break;
+		case player_states.run:		alarm_set(2, crouch_multi * step_delay * game_get_speed(gamespeed_fps)); break;
+		case player_states.crouch:	alarm_set(2, run_multi * step_delay * game_get_speed(gamespeed_fps)); break;
+	}
+}
 
 x += speed_x;
 
@@ -109,6 +118,8 @@ if (can_jump and !place_meeting(x, y - 1, global.solid_objects))
 		speed_y = -jump_start_speed;
 		alarm_set(alarms.late_jump, 0);
 		alarm_set(alarms.early_jump, 0);
+		
+		audio_play_sound(global.jump_sounds[irandom(4)], 100, false);
 	}
 	
 	//Velocity Cut
@@ -122,11 +133,21 @@ if (can_jump and !place_meeting(x, y - 1, global.solid_objects))
 
 if (place_meeting(x, y + speed_y, global.solid_objects)) //Collision check
 {
+	if (!has_fallen)
+	{
+		has_fallen = true;
+		audio_play_sound(global.land_sounds[irandom(4)], 100, false);
+	}
+	
 	while (!place_meeting(x, y + sign(speed_y), global.solid_objects))
 	{
 		y += sign(speed_y);
 	}
 	speed_y = 0;
+}
+else
+{
+	has_fallen = false;
 }
 
 

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"step_run_concrete_l_02",
+  "audioGroupId":{
+    "name":"audiogroup_step",
+    "path":"audiogroups/audiogroup_step",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.28879818,
+  "exportDir":"",
+  "name":"step_run_concrete_l_02",
+  "parent":{
+    "name":"Steps",
+    "path":"folders/Sounds/Steps.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"step_run_concrete_l_02.ogg",
+  "volume":1.0,
+}

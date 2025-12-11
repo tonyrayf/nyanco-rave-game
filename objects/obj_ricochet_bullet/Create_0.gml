@@ -28,7 +28,7 @@ collision_func = function(inst, i, sine, cosine)
 		
 		image_angle = direction;
 		
-		audio_play_sound([snd_ricco_1, snd_ricco_2, snd_ricco_3, snd_ricco_4, snd_ricco_5][irandom(4)], 100, false, 0.3);
+		audio_play_sound(global.ricco_sounds[irandom(4)], 100, false, 0.3);
 	}
 	else if (obj == obj_hitbox or object_get_parent(obj) == obj_hitbox)
 	{
