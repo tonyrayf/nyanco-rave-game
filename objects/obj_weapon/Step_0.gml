@@ -1,15 +1,8 @@
 if (!active) exit;
 
-var dir = point_direction(x, y, obj_shoot_area.x, obj_shoot_area.y);
+var dir = point_direction(x, y, obj_shoot_area.x, obj_shoot_area.y) - camera_get_view_angle(view_camera[0]) * 2;
 
 #region Weapon action
-
-if (setup)
-{
-	setup = false;
-	
-	current_weapon = auto_rifle;
-}
 
 if (last_weapon != current_weapon)
 {
@@ -116,7 +109,7 @@ y = obj_player.bbox_top + 60;
 sight_x = x + barrel_dist * cos(degtorad(dir));
 sight_y = y - barrel_dist * sin(degtorad(dir));
 
-image_angle = dir - (obj_shoot_area.direction_x == RIGHT ? 0 : 180) - camera_get_view_angle(view_camera[0]) * 2;
+image_angle = dir - (obj_shoot_area.direction_x == RIGHT ? 0 : 180);
 
 sprite_index = obj_shoot_area.direction_x == RIGHT ? current_weapon.weapon_sprite_right : current_weapon.weapon_sprite_left;
 

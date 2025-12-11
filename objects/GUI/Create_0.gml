@@ -5,3 +5,6 @@ ammo_y = 900;
 
 device_x = 1500;
 device_y = 900;
+
+
+thermal_googles_on = false;
