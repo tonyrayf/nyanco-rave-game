@@ -4,6 +4,7 @@ if (draw_setup)
 	
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
+	draw_set_font(f_main);
 }
 
 // Thermal googles
@@ -21,7 +22,7 @@ if (instance_exists(obj_weapon))
 	if (obj_weapon.alarm[1] == -1)
 	{
 		image_angle = 0;
-		draw_text_transformed(ammo_x, ammo_y, $"{obj_weapon.current_ammo}/{obj_weapon.current_weapon.capacity}", 2.2, 2.2, 0);
+		draw_text(ammo_x, ammo_y, $"{obj_weapon.current_weapon.current_ammo}/{obj_weapon.current_weapon.capacity}");
 	}
 	else
 	{
@@ -32,5 +33,5 @@ if (instance_exists(obj_weapon))
 if (instance_exists(obj_device) and variable_struct_exists(obj_device.current_device, "current_number"))
 {
 	image_angle = 0;
-	draw_text_transformed(device_x, device_y, $"{obj_device.current_device.current_number}/{obj_device.current_device.total_number}", 2.2, 2.2, 0);
+	draw_text(device_x, device_y, $"{obj_device.current_device.current_number}/{obj_device.current_device.total_number}");
 }

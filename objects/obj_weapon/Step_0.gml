@@ -1,14 +1,43 @@
 if (!active) exit;
 
-var dir = point_direction(x, y, obj_shoot_area.x, obj_shoot_area.y) - camera_get_view_angle(view_camera[0]) * 2;
+direction = point_direction(x, y, obj_shoot_area.x, obj_shoot_area.y) - camera_get_view_angle(view_camera[0]) * 2;
+dir_cos = cos(degtorad(direction));
+dir_sin = sin(degtorad(direction));
 
 #region Weapon action
+
+if (mods_setup)
+{
+	mods_setup = false;
+	
+	var i = 0;
+	repeat (array_length(first_w_mods))
+	{
+		first_weapon = first_w_mods[i++].change_func(first_weapon);
+	}
+	
+	i = 0;
+	repeat (array_length(second_w_mods))
+	{
+		second_weapon = second_w_mods[i++].change_func(second_weapon);
+	}
+}
+
+if (Input.key_first_weapon)
+{
+	current_weapon = first_weapon;
+	current_mods = first_w_mods;
+}
+else if (Input.key_second_weapon)
+{
+	current_weapon = second_weapon;
+	current_mods = second_w_mods;
+}
 
 if (last_weapon != current_weapon)
 {
 	last_weapon = current_weapon;
 	
-	current_ammo = current_weapon.capacity;
 	current_spread = current_weapon.min_spread;
 	
 	sprite_index = current_weapon.weapon_sprite_right;
@@ -17,8 +46,8 @@ if (last_weapon != current_weapon)
 	if (abs(x - obj_shoot_area.x) <= barrel_dist)
 	{
 		var length = (barrel_dist + 20);
-		obj_shoot_area.x = x + length * cos(degtorad(dir));
-		obj_shoot_area.y = y - length * sin(degtorad(dir));
+		obj_shoot_area.x = x + length * dir_cos;
+		obj_shoot_area.y = y - length * dir_sin;
 	}
 }
 
@@ -26,7 +55,7 @@ if (last_weapon != current_weapon)
 current_spread = lerp(current_spread, current_weapon.min_spread, 0.1);
 
 // Shoot
-if (alarm_get(0) == -1 and current_ammo > 0 and not is_reloading)
+if (alarm_get(0) == -1 and current_weapon.current_ammo > 0 and not is_reloading)
 {
 	if (Input.key_shoot_press and not current_weapon.auto)
 	or (Input.key_shoot and current_weapon.auto)
@@ -44,8 +73,7 @@ if (alarm_get(0) == -1 and current_ammo > 0 and not is_reloading)
 			{
 				// find direction spread in degrees from triangle lengths
 				var spread_dir = arctan(_s.current_spread / _s.current_weapon.range) * DEG_PER_RAD;
-				var point_dir = point_direction(x, y, obj_shoot_area.x, obj_shoot_area.y);
-				direction = random_range(point_dir - spread_dir, point_dir + spread_dir);
+				direction = random_range(_s.direction - spread_dir, _s.direction + spread_dir);
 				
 				// velocity spread is in percents
 				var vel = _s.current_weapon.velocity;
@@ -71,13 +99,13 @@ if (alarm_get(0) == -1 and current_ammo > 0 and not is_reloading)
 		}
 		
 		// eject casing
-		with (instance_create_depth(x + barrel_dist / 2 * cos(degtorad(dir)), y - barrel_dist / 2 * sin(degtorad(dir)), depth - 1 , obj_casing))
+		with (instance_create_depth(x + barrel_dist / 2 * dir_cos, y - barrel_dist / 2 * dir_sin, depth - 1 , obj_casing))
 		{
 			speed_x = random_range(-3, 3);
 			speed_y = 2.5;
 		}
 		
-		current_ammo -= 1;
+		current_weapon.current_ammo -= 1;
 		current_spread += current_weapon.spread_jump;
 		
 		do_camera_shake(current_weapon.shake_amplitude, 0.3);
@@ -85,14 +113,19 @@ if (alarm_get(0) == -1 and current_ammo > 0 and not is_reloading)
 		var snd = current_weapon.shot_sound;
 		audio_play_sound(snd.sound, 100, false, snd.gain, 0, snd.pitch);
 		audio_play_sound(snd_weap, 100, false, 0.5);
+		
+		if (!current_weapon.silent)
+		{
+			
+		}
 	}
 }
 
 current_spread = clamp(current_spread, current_weapon.min_spread, current_weapon.max_spread);
 
 // Reload
-if (Input.key_reload and not is_reloading and current_ammo < current_weapon.capacity)
-or (current_ammo <= 0 and not is_reloading)
+if (Input.key_reload and not is_reloading and current_weapon.current_ammo < current_weapon.capacity)
+or (current_weapon.current_ammo <= 0 and not is_reloading)
 {
 	is_reloading = true;
 	
@@ -106,11 +139,17 @@ or (current_ammo <= 0 and not is_reloading)
 x = obj_shoot_area.direction_x == RIGHT ? obj_player.bbox_right - origin_offset : obj_player.bbox_left + origin_offset;
 y = obj_player.bbox_top + 60;
 
-sight_x = x + barrel_dist * cos(degtorad(dir));
-sight_y = y - barrel_dist * sin(degtorad(dir));
+sight_x = x + barrel_dist * dir_cos;
+sight_y = y - barrel_dist * dir_sin;
 
-image_angle = dir - (obj_shoot_area.direction_x == RIGHT ? 0 : 180);
+image_angle = direction - (obj_shoot_area.direction_x == RIGHT ? 0 : 180);
 
 sprite_index = obj_shoot_area.direction_x == RIGHT ? current_weapon.weapon_sprite_right : current_weapon.weapon_sprite_left;
 
 #endregion
+
+var i = 0;
+repeat (array_length(current_mods))
+{
+	current_mods[i++].step_func();
+}

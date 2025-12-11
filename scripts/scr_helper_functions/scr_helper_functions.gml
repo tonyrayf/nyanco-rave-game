@@ -9,3 +9,9 @@ function wrap(_x, _min, _max)
 	else if (_x < _min) return _max;
 	else return _x;
 }
+
+// я даже незнаю почему это работает
+function delta_mirror_direction(dir, surface_angle)
+{
+	return 2 * abs((surface_angle + (dir < surface_angle ? 0 : 360)) - dir);
+}

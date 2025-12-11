@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_explosion",
+  "%Name":"snd_arsup_shoot",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":1.000136,
   "exportDir":"",
-  "name":"snd_explosion",
+  "name":"snd_arsup_shoot",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"NYANCO RAVE",
+    "path":"NYANCO RAVE.yyp",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"",
+  "soundFile":"snd_arsup_shoot.ogg",
   "volume":1.0,
 }

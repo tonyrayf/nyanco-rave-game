@@ -1,9 +1,18 @@
 active = true;
 
-current_weapon = Equipment.auto_rifle;
-last_weapon = current_weapon;
+dir_cos = 0;
+dir_sin = 0;
 
-current_ammo = 0;
+current_weapon = variable_clone(Equipment.smg);
+last_weapon = {};
+
+first_weapon = current_weapon; first_w_mods = [Equipment.suppressor, Equipment.ricochet_ammo];
+second_weapon = variable_clone(Equipment.pistol); second_w_mods = [Equipment.suppressor];
+
+current_mods = first_w_mods;
+
+mods_setup = true;
+
 current_spread = 0;
 is_reloading = false;
 

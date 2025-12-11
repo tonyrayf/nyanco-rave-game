@@ -2,8 +2,8 @@
   "$GMSound":"v2",
   "%Name":"snd_smg",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"audiogroup_sound",
+    "path":"audiogroups/audiogroup_sound",
   },
   "bitDepth":1,
   "channelFormat":0,
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"snd_smg.wav",
-  "volume":1.0,
+  "volume":0.7,
 }

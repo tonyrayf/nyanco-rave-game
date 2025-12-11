@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_9mm_bullet",
-    "path":"sprites/spr_9mm_bullet/spr_9mm_bullet.yy",
+    "name":"spr_ricochet_bullet",
+    "path":"sprites/spr_ricochet_bullet/spr_ricochet_bullet.yy",
   },
   "spriteMaskId":null,
   "visible":true,

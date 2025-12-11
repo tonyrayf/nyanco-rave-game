@@ -10,17 +10,17 @@ if (keyboard_check_pressed(keyboard_key))
 		case vk_f2: audio_group_set_gain(audiogroup_sound, !audio_group_get_gain(audiogroup_sound))
 	}
 	
-	if (instance_exists(obj_weapon)) with (obj_weapon) switch (keyboard_key)
-	{
-		case ord("1"): current_weapon = Equipment.auto_rifle; break;
-		case ord("2"): current_weapon = Equipment.smg; break;
-		case ord("3"): current_weapon = Equipment.sniper_rifle; break;
-		case ord("4"): current_weapon = Equipment.pistol; break;
-		case ord("5"): current_weapon = Equipment.shotgun; break;
-		case ord("6"): current_weapon = Equipment.auto_shotgun; break;
-		case ord("0"): current_weapon = Equipment.admin_gun; break;
-		case ord("9"): current_weapon = Equipment.admin_gun2; break;
-	}
+	//if (instance_exists(obj_weapon)) with (obj_weapon) switch (keyboard_key)
+	//{
+	//	case ord("1"): current_weapon = Equipment.auto_rifle; break;
+	//	case ord("2"): current_weapon = Equipment.smg; break;
+	//	case ord("3"): current_weapon = Equipment.sniper_rifle; break;
+	//	case ord("4"): current_weapon = Equipment.pistol; break;
+	//	case ord("5"): current_weapon = Equipment.shotgun; break;
+	//	case ord("6"): current_weapon = Equipment.auto_shotgun; break;
+	//	case ord("0"): current_weapon = Equipment.admin_gun; break;
+	//	case ord("9"): current_weapon = Equipment.admin_gun2; break;
+	//}
 	if (instance_exists(obj_device)) with (obj_device) switch (keyboard_key)
 	{
 		case vk_numpad4: current_device = Equipment.impact_grenade; break;

@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_casing_eject_2",
+  "%Name":"exp_c4_bang",
   "audioGroupId":{
     "name":"audiogroup_sound",
     "path":"audiogroups/audiogroup_sound",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.6175964,
+  "duration":5.2906575,
   "exportDir":"",
-  "name":"snd_casing_eject_2",
+  "name":"exp_c4_bang",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_casing_eject_2.ogg",
+  "soundFile":"exp_c4_bang.ogg",
   "volume":1.0,
 }

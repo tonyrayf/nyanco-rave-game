@@ -23,8 +23,7 @@ collision_func = function(inst, i, sine, cosine)
 			if (++_i > i) break;
 		}
 		
-		// я даже незнаю почему это работает
-		direction += 2 * abs((inst.image_angle + (direction < inst.image_angle ? 0 : 360)) - direction);
+		direction += delta_mirror_direction(direction, inst.image_angle);
 		
 		image_angle = direction;
 		
@@ -60,6 +59,8 @@ collision_func = function(inst, i, sine, cosine)
 		inst.explode = true;
 	}	
 }
+
+trail_number = 5;
 
 _x = [];
 _y = [];

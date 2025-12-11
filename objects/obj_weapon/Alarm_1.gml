@@ -2,4 +2,4 @@
 
 is_reloading = false;
 
-current_ammo = current_weapon.capacity;
+current_weapon.current_ammo = current_weapon.capacity;

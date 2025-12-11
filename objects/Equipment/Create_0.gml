@@ -1,8 +1,10 @@
 #region Weapons
 
 pistol = {
+	silent : false,
 	damage : 30,
 	fire_rate : 1000,			// rounds/minute
+	current_ammo : 8,
 	capacity : 8,				// max ammo
 	reload_time : 0.7,			// in seconds
 	auto : false,
@@ -28,8 +30,10 @@ pistol = {
 }
 
 smg = {
+	silent : false,
 	damage : 25,
 	fire_rate : 600,
+	current_ammo : 40,
 	capacity : 40,
 	reload_time : 1.4,
 	auto : true,
@@ -55,8 +59,10 @@ smg = {
 }
 
 auto_rifle = {
+	silent : false,
 	damage : 40,
 	fire_rate : 400,
+	current_ammo : 30,
 	capacity : 30,
 	reload_time : 1.7,
 	auto : true,
@@ -69,8 +75,8 @@ auto_rifle = {
 	spread_lerp : 0.2,
 	range : 700,
 	shot_sound : {
-		sound : snd_pistol,
-		pitch : 0.9,
+		sound : snd_arsup_shoot,
+		pitch : 1.2,
 		gain : 1
 	},
 	
@@ -83,8 +89,10 @@ auto_rifle = {
 }
 
 sniper_rifle = {
+	silent : false,
 	damage : 100,
 	fire_rate : 60,
+	current_ammo : 5,
 	capacity : 5,
 	reload_time : 2.2,
 	auto : false,
@@ -112,8 +120,10 @@ sniper_rifle = {
 }
 
 shotgun = {
+	silent : false,
 	damage : 10,
 	fire_rate : 80,
+	current_ammo : 7,
 	capacity : 7,
 	reload_time : 2.2,
 	auto : false,
@@ -139,35 +149,8 @@ shotgun = {
 	effective_range : 2500,
 }
 
-auto_shotgun = {
-	damage : 7,
-	fire_rate : 200,
-	capacity : 13,
-	reload_time : 1.7,
-	auto : true,
-	velocity : 40,
-	velocity_spread : 8,
-	shells_in_shot : 15,
-	min_spread : 120,
-	max_spread : 120,
-	spread_jump : 0,
-	spread_lerp : 1,
-	range : 300,
-	shot_sound : {
-		sound : snd_shotgun,
-		pitch : 1,
-		gain : 1
-	},
-	
-	shell_sprite : spr_pellete,
-	weapon_sprite_right : spr_kilo_right,
-	weapon_sprite_left : spr_kilo_left,
-	
-	shake_amplitude : 5,
-	effective_range : 2500,
-}
-
 admin_gun = {
+	silent : true,
 	damage : 1000,
 	fire_rate : 800,
 	capacity : 999,
@@ -195,6 +178,7 @@ admin_gun = {
 }
 
 admin_gun2 = {
+	silent : false,
 	damage : 1000,
 	fire_rate : 800,
 	capacity : 999,
@@ -221,6 +205,48 @@ admin_gun2 = {
 	shake_amplitude : 0,
 	penetrate_probability : 100,
 	current_shell : obj_ricochet_bullet,
+}
+
+#endregion
+
+#region Modifications
+
+suppressor = {
+	draw_func : function () {
+		with (obj_weapon)
+		{
+			draw_sprite_ext (
+				spr_suppressor, 0,
+				sight_x, sight_y,
+				sign(obj_shoot_area.x - obj_weapon.x), 1,
+				image_angle, c_white, 1
+			);
+		}
+	},
+	step_func : function () {
+	},
+	change_func : function (weapon) {
+		weapon.silent = true;
+		
+		return weapon;
+	}
+}
+
+ricochet_ammo = {
+	draw_func : function () {
+	},
+	step_func : function () {
+	},
+	change_func : function (weapon) {
+		weapon.fire_rate /= 2;
+		weapon.max_spread /= 1.25;
+		weapon.min_spread /= 1.25;
+		weapon.current_shell = obj_ricochet_bullet;
+		weapon.shake_amplitude = 0.5;
+		weapon.shell_sprite = spr_ricochet_bullet;
+		
+		return weapon;
+	}
 }
 
 #endregion
