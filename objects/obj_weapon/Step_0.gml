@@ -110,11 +110,11 @@ or (current_ammo <= 0 and not is_reloading)
 
 #region Weapon view
 
-sight_x = x + barrel_dist * cos(degtorad(dir));
-sight_y = y - barrel_dist * sin(degtorad(dir));
-
 x = obj_shoot_area.direction_x == RIGHT ? obj_player.bbox_right - origin_offset : obj_player.bbox_left + origin_offset;
 y = obj_player.bbox_top + 60;
+
+sight_x = x + barrel_dist * cos(degtorad(dir));
+sight_y = y - barrel_dist * sin(degtorad(dir));
 
 image_angle = dir - (obj_shoot_area.direction_x == RIGHT ? 0 : 180) - camera_get_view_angle(view_camera[0]) * 2;
 
