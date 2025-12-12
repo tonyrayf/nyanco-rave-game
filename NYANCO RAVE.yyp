@@ -187,6 +187,7 @@
     {"id":{"name":"spr_pistol_right","path":"sprites/spr_pistol_right/spr_pistol_right.yy",},},
     {"id":{"name":"spr_Pixel","path":"sprites/spr_Pixel/spr_Pixel.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
+    {"id":{"name":"spr_re","path":"sprites/spr_re/spr_re.yy",},},
     {"id":{"name":"spr_reload","path":"sprites/spr_reload/spr_reload.yy",},},
     {"id":{"name":"spr_ricochet_bullet","path":"sprites/spr_ricochet_bullet/spr_ricochet_bullet.yy",},},
     {"id":{"name":"spr_ricochet_trace","path":"sprites/spr_ricochet_trace/spr_ricochet_trace.yy",},},

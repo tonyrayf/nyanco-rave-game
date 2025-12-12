@@ -42,7 +42,7 @@ if (shake_active and instance_exists(obj_player)) // Shake
 
 if (follow_player and instance_exists(obj_player) and instance_exists(obj_shoot_area))
 {
-	next_x = obj_player.x + offset_x * obj_player.last_direction_x;
+	next_x = obj_player.x + offset_x * obj_shoot_area.direction_x;
 	next_y = obj_player.y + offset_y;
 }
 

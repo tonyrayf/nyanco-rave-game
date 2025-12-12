@@ -12,8 +12,8 @@ direction_x = 0;
 last_direction_x  = 0;
 
 top_speed_x_def = 8;		
-top_speed_x_right = top_speed_x_def;
-top_speed_x_left = -top_speed_x_def;
+top_speed_x_forward = top_speed_x_def;
+top_speed_x_back = top_speed_x_def / 1.5;
 
 acceleration_x = 1;
 deceleration_x = 1.25;
@@ -34,7 +34,7 @@ speed_y = 0;
 
 acceleration_g = 1;
 
-var jump_height = 0.75*sprite_get_height(sprite_index);
+var jump_height = 0.75*sprite_height;
 def_jump_start_speed = ceil(sqrt(2 * acceleration_g * jump_height) - 0.5);  //Physics formula: v0 = sqrt(2*g*h)
 jump_start_speed = def_jump_start_speed;
 
@@ -50,5 +50,8 @@ can_shoot = true;
 has_fallen = false;
 
 step_delay = 0.35; // in seconds
+
+start_xscale = image_xscale;
+start_yscale = image_yscale;
 
 hp = 100;

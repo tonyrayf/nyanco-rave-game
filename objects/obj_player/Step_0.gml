@@ -61,20 +61,29 @@ if (Input.key_run_release)
 switch (current_state)
 {
 	case player_states.walk: {
-		speed_x = clamp(speed_x, top_speed_x_left, top_speed_x_right);
-		image_yscale = 1;
+		speed_x = obj_shoot_area.direction_x == RIGHT
+			? clamp(speed_x, -top_speed_x_back, top_speed_x_forward)
+			: clamp(speed_x, -top_speed_x_forward, top_speed_x_back);
+		
+		image_yscale = start_xscale;
 		break;
 	}
 	
 	case player_states.run: {
-		speed_x = clamp(speed_x, top_speed_x_left * run_multi, top_speed_x_right * run_multi);
-		image_yscale = 0.9;
+		speed_x = obj_shoot_area.direction_x == RIGHT
+			? clamp(speed_x, -top_speed_x_back * run_multi, top_speed_x_forward * run_multi)
+			: clamp(speed_x, -top_speed_x_forward * run_multi, top_speed_x_back * run_multi);
+		
+		image_yscale = start_xscale * 0.9;
 		break;
 	}
 	
 	case player_states.crouch: {
-		speed_x = clamp(speed_x, top_speed_x_left * crouch_multi, top_speed_x_right * crouch_multi);
-		image_yscale = 0.5;
+		speed_x = obj_shoot_area.direction_x == RIGHT
+			? clamp(speed_x, -top_speed_x_back * crouch_multi, top_speed_x_forward * crouch_multi)
+			: clamp(speed_x, -top_speed_x_forward * crouch_multi, top_speed_x_back * crouch_multi);
+		
+		image_yscale = start_xscale * 0.5;
 		break;
 	}
 }
@@ -161,3 +170,6 @@ if (hp <= 0)
 	instance_create_depth(0, 0, 0, obj_lose);
 	instance_destroy();	
 }
+
+if (obj_shoot_area.direction_x == RIGHT) image_index = 1;
+else image_index = 0;

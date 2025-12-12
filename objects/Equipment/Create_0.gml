@@ -31,7 +31,7 @@ pistol = {
 
 smg = {
 	silent : false,
-	damage : 25,
+	damage : 30,
 	fire_rate : 600,
 	current_ammo : 40,
 	capacity : 40,
