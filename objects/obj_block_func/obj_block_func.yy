@@ -39,5 +39,5 @@
     "path":"sprites/spr_block_func/spr_block_func.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

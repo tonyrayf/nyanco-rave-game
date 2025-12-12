@@ -50,9 +50,6 @@ y += speed_y;
 
 #endregion
 
-layer_sequence_x(seq, x);
-layer_sequence_y(seq, y);
-
 if(setup){
 	setup = false;
 	
@@ -61,9 +58,21 @@ if(setup){
 	
 	enemy_FOV = get_inst_from_seq(seq, obj_check_hitbox);
 	
-	get_inst_from_seq_by_name(seq, "body").hp = hp;
-	get_inst_from_seq_by_name(seq, "head").hp = hp * 0.3;
-	get_inst_from_seq_by_name(seq, "legs").hp = hp * 1.25;
+	with (get_inst_from_seq_by_name(seq, "body"))
+	{
+		image_alpha = 0;
+		hp = hp;
+	}
+	with (get_inst_from_seq_by_name(seq, "head"))
+	{
+		image_alpha = 0;
+		hp = hp * 0.3;
+	}
+	with (get_inst_from_seq_by_name(seq, "legs"))
+	{
+		image_alpha = 0;
+		hp = hp * 1.25;
+	}
 	
 	if(name!="default_name" and ds_map_exists(global.paths_map,name)){
 		path_start(global.paths_map[?name],speed_idle,path_action_reverse,0);
@@ -106,3 +115,6 @@ switch current_state{
 		}
 	break;
 }
+
+layer_sequence_x(seq, x);
+layer_sequence_y(seq, y);

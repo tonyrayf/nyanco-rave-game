@@ -17,7 +17,7 @@ pistol = {
 	spread_lerp : 0.1,			
 	range : 500,				// in pixels
 	shot_sound : {
-		sound : snd_pistol,
+		sound : snd_smg,
 		pitch : 1,
 		gain : 1
 	},
@@ -69,7 +69,7 @@ auto_rifle = {
 	velocity : 50,
 	velocity_spread : 0,
 	shells_in_shot : 1,
-	min_spread : 20,
+	min_spread : 12,
 	max_spread : 60,
 	spread_jump : 20,
 	spread_lerp : 0.2,
