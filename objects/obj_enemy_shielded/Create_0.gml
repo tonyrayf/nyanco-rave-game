@@ -23,4 +23,4 @@ search_sus_return = 600;//
 
 seq = layer_sequence_create(layer, x, y, sq_enemy_shielded);
 seq_inst = layer_sequence_get_instance(seq);
-seq_dir = dirs.Left;
+seq_dir = dirs.Right;
