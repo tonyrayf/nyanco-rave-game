@@ -81,7 +81,8 @@ if (setup)
 switch current_state{
 	case states.Idle:
 		if(enemy_FOV.is_object_in_zone){
-			suspiciousness++;
+			show_debug_message(name+" "+string(point_distance(x,y,obj_player.x,obj_player.y)));
+			suspiciousness+=1000/point_distance(x,y,obj_player.x,obj_player.y);
 			if(self.path_speed!=0){
 				self.path_speed=0;
 			}
@@ -104,7 +105,7 @@ switch current_state{
 	break;
 	case states.Search:
 		if(enemy_FOV.is_object_in_zone){
-			suspiciousness++;
+			suspiciousness+=1000/point_distance(x,y,obj_player.x,obj_player.y);
 			if(suspiciousness>=search_to_detected){
 				suspiciousness=0;
 				current_state=states.Detected;
