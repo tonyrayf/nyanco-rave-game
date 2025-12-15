@@ -95,6 +95,7 @@
     {"id":{"name":"obj_device","path":"objects/obj_device/obj_device.yy",},},
     {"id":{"name":"obj_enemy_regular","path":"objects/obj_enemy_regular/obj_enemy_regular.yy",},},
     {"id":{"name":"obj_enemy_shielded","path":"objects/obj_enemy_shielded/obj_enemy_shielded.yy",},},
+    {"id":{"name":"obj_equipment_cursor","path":"objects/obj_equipment_cursor/obj_equipment_cursor.yy",},},
     {"id":{"name":"obj_explosion","path":"objects/obj_explosion/obj_explosion.yy",},},
     {"id":{"name":"obj_fade","path":"objects/obj_fade/obj_fade.yy",},},
     {"id":{"name":"obj_frag_grenade","path":"objects/obj_frag_grenade/obj_frag_grenade.yy",},},
@@ -114,7 +115,6 @@
     {"id":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
     {"id":{"name":"rm_equipment","path":"rooms/rm_equipment/rm_equipment.yy",},},
     {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
-    {"id":{"name":"rm_intro","path":"rooms/rm_intro/rm_intro.yy",},},
     {"id":{"name":"rm_ricochet_test","path":"rooms/rm_ricochet_test/rm_ricochet_test.yy",},},
     {"id":{"name":"scr_button_functions","path":"scripts/scr_button_functions/scr_button_functions.yy",},},
     {"id":{"name":"scr_camera_functions","path":"scripts/scr_camera_functions/scr_camera_functions.yy",},},
@@ -246,10 +246,9 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
-    {"roomId":{"name":"rm_intro","path":"rooms/rm_intro/rm_intro.yy",},},
+    {"roomId":{"name":"rm_equipment","path":"rooms/rm_equipment/rm_equipment.yy",},},
     {"roomId":{"name":"rm_1","path":"rooms/rm_1/rm_1.yy",},},
     {"roomId":{"name":"rm_ricochet_test","path":"rooms/rm_ricochet_test/rm_ricochet_test.yy",},},
-    {"roomId":{"name":"rm_equipment","path":"rooms/rm_equipment/rm_equipment.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
