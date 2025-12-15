@@ -58,7 +58,26 @@ step_delay = 0.35; // in seconds
 start_xscale = image_xscale;
 start_yscale = image_yscale;
 
+sprite_xscale = image_xscale;
+sprite_yscale = image_yscale;
+
 hp = 100;
 
 current_animcurve = -1;
 current_animcurve_duration = -1;
+
+function player_set_anim_curve(animcurve, duration)
+{
+	if !(alarm_get(4) == -1 or current_animcurve != animcurve) return;
+	
+	alarm[4] = duration * game_get_speed(gamespeed_fps);
+	current_animcurve = animcurve;
+	current_animcurve_duration = duration;
+}
+
+function player_reset_anim_curve()
+{
+	alarm[4] = -1;
+	current_animcurve = -1;
+	current_animcurve_duration = -1;
+}

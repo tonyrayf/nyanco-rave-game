@@ -2,7 +2,7 @@ if (!active or !instance_exists(obj_player)) exit;
 
 draw_self();
 draw_set_color(c_white);
-draw_set_alpha(0.2);
+draw_set_alpha(0.16);
 
 // Some trigonometric manipulations
 var dir = degtorad(point_direction(obj_weapon.x, obj_weapon.y, x, y));

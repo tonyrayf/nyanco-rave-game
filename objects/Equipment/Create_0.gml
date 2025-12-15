@@ -2,7 +2,7 @@
 
 pistol = {
 	silent : false,
-	damage : 30,
+	damage : 33,
 	fire_rate : 1000,			// rounds/minute
 	current_ammo : 8,
 	capacity : 8,				// max ammo
@@ -21,6 +21,12 @@ pistol = {
 		pitch : 1,
 		gain : 1
 	},
+	shot_sup_sound : {
+		sound : snd_smg,
+		pitch : 1,
+		gain : 1,
+	},
+	
 	reload_sound : snd_pistol_reload,
 	
 	shell_sprite : spr_9mm_bullet,
@@ -34,8 +40,8 @@ smg = {
 	silent : false,
 	damage : 30,
 	fire_rate : 600,
-	current_ammo : 40,
-	capacity : 40,
+	current_ammo : 30,
+	capacity : 30,
 	reload_time : 2.1,
 	auto : true,
 	velocity : 40,
@@ -51,6 +57,12 @@ smg = {
 		pitch : 1,
 		gain : 0.6
 	},
+	shot_sup_sound : {
+		sound : snd_smg,
+		pitch : 1,
+		gain : 1,
+	},
+	
 	reload_sound : snd_smg_reload,
 	
 	shell_sprite : spr_9mm_bullet,
@@ -63,9 +75,9 @@ smg = {
 assault_rifle = {
 	silent : false,
 	damage : 40,
-	fire_rate : 400,
-	current_ammo : 30,
-	capacity : 30,
+	fire_rate : 500,
+	current_ammo : 25,
+	capacity : 25,
 	reload_time : 2.6,
 	auto : true,
 	velocity : 50,
@@ -81,6 +93,12 @@ assault_rifle = {
 		pitch : 1.2,
 		gain : 1
 	},
+	shot_sup_sound : {
+		sound : snd_arsup_shoot,
+		pitch : 1,
+		gain : 1,
+	},
+	
 	reload_sound : snd_assault_rifle_reload,
 	
 	shell_sprite : spr_ar_bullet,
@@ -111,6 +129,12 @@ sniper_rifle = {
 		pitch : 1,
 		gain : 1
 	},
+	shot_sup_sound : {
+		sound : snd_arsup_shoot,
+		pitch : 1,
+		gain : 1,
+	},
+	
 	reload_sound : snd_sniper_rifle_reload,
 	
 	shell_sprite : spr_lapua_bullet,
@@ -143,6 +167,12 @@ shotgun = {
 		pitch : 1,
 		gain : 1
 	},
+	shot_sup_sound : {
+		sound : snd_arsup_shoot,
+		pitch : 1,
+		gain : 1,
+	},
+	
 	reload_sound : snd_shotgun_reload,
 	
 	shell_sprite : spr_pellete,
@@ -174,6 +204,12 @@ admin_gun = {
 		pitch : 1,
 		gain : 1,
 	},
+	shot_sup_sound : {
+		sound : snd_arsup_shoot,
+		pitch : 1,
+		gain : 1,
+	},
+	
 	shell_sprite : spr_pellete,
 	shake_amplitude : 5,
 	penetrate_probability : 100,
@@ -202,6 +238,11 @@ admin_gun2 = {
 		sound : snd_shotgun,
 		pitch : 1,
 		gain : 1
+	},
+	shot_sup_sound : {
+		sound : snd_arsup_shoot,
+		pitch : 1,
+		gain : 1,
 	},
 	
 	shell_sprite : spr_lapua_bullet,
@@ -250,6 +291,47 @@ ricochet_ammo = {
 		weapon.current_shell = obj_ricochet_bullet;
 		weapon.shake_amplitude = 0.5;
 		weapon.shell_sprite = spr_ricochet_bullet;
+		
+		return weapon;
+	}
+}
+
+extended_mag = {
+	draw_func : function () {
+	},
+	step_func : function () {
+	},
+	change_func : function (weapon) {
+		weapon.capacity = floor(weapon.capacity * 1.6);
+		weapon.current_ammo = weapon.capacity;
+		
+		return weapon;
+	}
+}
+
+laser = {
+	draw_func : function () {
+		with (obj_weapon)
+		{
+			draw_sprite_ext (
+				spr_laser, 0,
+				sight_x - dir_cos * 10, sight_y + dir_sin * 10,
+				sign(obj_shoot_area.x - obj_weapon.x), 1,
+				image_angle, c_white, 1
+			);
+			draw_set_alpha(0.6);
+			
+			var end_x = sight_x + current_weapon.range*dir_cos;
+			var end_y = sight_y - current_weapon.range*dir_sin;
+			draw_line_width_colour(sight_x, sight_y, end_x, end_y, 2, c_lime, c_lime);
+			draw_circle_colour(end_x, end_y, 3, c_lime, c_lime, false);
+			draw_set_alpha(1);
+		}
+	},
+	step_func : function () {
+	},
+	change_func : function (weapon) {
+		weapon.spread_jump /= 2;
 		
 		return weapon;
 	}

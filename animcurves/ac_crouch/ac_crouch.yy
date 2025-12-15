@@ -1,22 +1,19 @@
 {
   "$GMAnimCurve":"",
-  "%Name":"ac_idle",
+  "%Name":"ac_crouch",
   "channels":[
     {"$GMAnimCurveChannel":"","%Name":"yscale","colour":4290799884,"name":"yscale","points":[
         {"th0":-0.1,"th1":0.1,"tv0":0.0,"tv1":0.0,"x":0.0,"y":1.0,},
-        {"th0":1.0,"th1":-1.0,"tv0":0.0,"tv1":0.0,"x":0.25,"y":1.015,},
-        {"th0":1.0,"th1":-1.0,"tv0":0.0,"tv1":0.0,"x":0.75,"y":0.985,},
+        {"th0":1.0,"th1":-1.0,"tv0":0.0,"tv1":0.0,"x":0.5,"y":0.98,},
         {"th0":-0.1,"th1":0.1,"tv0":0.0,"tv1":0.0,"x":1.0,"y":1.0,},
       ],"resourceType":"GMAnimCurveChannel","resourceVersion":"2.0","visible":true,},
-    {"$GMAnimCurveChannel":"","%Name":"xscale","colour":4278190271,"name":"xscale","points":[
+    {"$GMAnimCurveChannel":"","%Name":"xscale","colour":4281083598,"name":"xscale","points":[
         {"th0":-0.1,"th1":0.1,"tv0":0.0,"tv1":0.0,"x":0.0,"y":1.0,},
-        {"th0":1.0,"th1":-1.0,"tv0":0.0,"tv1":0.0,"x":0.25,"y":0.985,},
-        {"th0":1.0,"th1":-1.0,"tv0":0.0,"tv1":0.0,"x":0.75,"y":1.015,},
         {"th0":-0.1,"th1":0.1,"tv0":0.0,"tv1":0.0,"x":1.0,"y":1.0,},
       ],"resourceType":"GMAnimCurveChannel","resourceVersion":"2.0","visible":true,},
   ],
   "function":1,
-  "name":"ac_idle",
+  "name":"ac_crouch",
   "parent":{
     "name":"Animation Curves",
     "path":"folders/Animation Curves.yy",

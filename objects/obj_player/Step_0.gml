@@ -59,14 +59,11 @@ switch (current_state)
 		
 		if (!Input.key_shoot)
 		{
-			current_animcurve = ac_idle;
-			current_animcurve_duration = 2;
+			if (alarm_get(4) == -1)
+				player_set_anim_curve(ac_idle, 2);
 		}
 		else
-		{
-			current_animcurve = -1;
-			current_animcurve_duration = -1;	
-		}
+			player_reset_anim_curve();
 		
 		// Switch state
 		if (speed_x != 0)
@@ -87,10 +84,7 @@ switch (current_state)
 			? clamp(speed_x, -top_speed_x_back, top_speed_x_forward)
 			: clamp(speed_x, -top_speed_x_forward, top_speed_x_back);
 		
-		image_yscale = start_yscale;
-		
-		current_animcurve = -1;
-		current_animcurve_duration = -1;
+		player_set_anim_curve(ac_walk, step_delay * 2);
 		
 		// Switch state
 		if (Input.key_crouch_press) current_state = player_states.crouch;
@@ -105,10 +99,7 @@ switch (current_state)
 			? clamp(speed_x, -top_speed_x_back, top_speed_x_forward * run_multi)
 			: clamp(speed_x, -top_speed_x_forward * run_multi, top_speed_x_back);
 		
-		image_yscale = start_yscale * 0.9;
-		
-		current_animcurve = -1;
-		current_animcurve_duration = -1;
+		player_set_anim_curve(ac_run, step_delay / run_multi * 2);
 		
 		// Switch state
 		if (Input.key_crouch_press) current_state = player_states.slide;
@@ -124,11 +115,9 @@ switch (current_state)
 			? clamp(speed_x, -top_speed_x_back * crouch_multi, top_speed_x_forward * crouch_multi)
 			: clamp(speed_x, -top_speed_x_forward * crouch_multi, top_speed_x_back * crouch_multi);
 		
-		image_yscale = start_yscale * 0.7;
 		state_jump = false;
 		
-		current_animcurve = -1;
-		current_animcurve_duration = -1;
+		player_set_anim_curve(ac_crouch, step_delay / crouch_multi * 2);
 		
 		// Switch state
 		if (Input.key_crouch_press or Input.key_jump_press)
@@ -151,7 +140,6 @@ switch (current_state)
 			audio_play_sound(snd_slide, 100, false);
 		}
 		
-		image_yscale = start_yscale * 0.4;
 		state_jump = false;
 		
 		// Switch state
@@ -176,8 +164,8 @@ if (direction_x != 0 and speed_y == 0 and alarm_get(2) == -1)
 	switch (current_state)
 	{
 		case player_states.walk:	alarm_set(2, step_delay * game_get_speed(gamespeed_fps)); break;
-		case player_states.run:		alarm_set(2, crouch_multi * step_delay * game_get_speed(gamespeed_fps)); break;
-		case player_states.crouch:	alarm_set(2, run_multi * step_delay * game_get_speed(gamespeed_fps)); break;
+		case player_states.run:		alarm_set(2, step_delay / run_multi * game_get_speed(gamespeed_fps)); break;
+		case player_states.crouch:	alarm_set(2, step_delay / crouch_multi * game_get_speed(gamespeed_fps)); break;
 	}
 }
 
@@ -211,8 +199,7 @@ if (can_jump and !place_meeting(x, y - 1, global.solid_objects) and state_jump)
 		
 		audio_play_sound(global.jump_sounds[irandom(4)], 100, false);
 		
-		current_animcurve = ac_jump;
-		current_animcurve_duration = 0.35;
+		player_set_anim_curve(ac_jump, 0.35);
 	}
 	
 	//Velocity Cut
@@ -246,7 +233,7 @@ else
 
 y += speed_y;
 
-aim_origin_y = bbox_top + 60;
+aim_origin_y = y - (sprite_height - 60) * sprite_yscale;
 
 #endregion
 
@@ -259,19 +246,14 @@ if (hp <= 0)
 if (obj_shoot_area.direction_x == RIGHT) image_index = 1;
 else image_index = 0;
 
-if (current_animcurve_duration != -1 and alarm_get(4) == -1)
-{
-	alarm_set(4, current_animcurve_duration * game_get_speed(gamespeed_fps));	
-}
-
 if (current_animcurve != -1)
 {
 	var time = alarm_get(4) / current_animcurve_duration / game_get_speed(gamespeed_fps);
-	image_xscale = animcurve_channel_evaluate(animcurve_get_channel(current_animcurve, "xscale"), time);
-	image_yscale = animcurve_channel_evaluate(animcurve_get_channel(current_animcurve, "yscale"), time);
+	sprite_xscale = animcurve_channel_evaluate(animcurve_get_channel(current_animcurve, "xscale"), time);
+	sprite_yscale = animcurve_channel_evaluate(animcurve_get_channel(current_animcurve, "yscale"), time);
 }
 else
 {
-	image_xscale += (1 - image_xscale) * 0.5;
-	image_yscale += (1 - image_yscale) * 0.5;
+	sprite_xscale += (1 - sprite_xscale) * 0.5;
+	sprite_yscale += (1 - sprite_yscale) * 0.5;
 }

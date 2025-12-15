@@ -113,14 +113,9 @@ if (alarm_get(0) == -1 and current_weapon.current_ammo > 0 and not is_reloading)
 		
 		do_camera_shake(current_weapon.shake_amplitude, 0.3);
 		
-		var snd = current_weapon.shot_sound;
+		var snd = !current_weapon.silent ? current_weapon.shot_sound : current_weapon.shot_sup_sound;
 		audio_play_sound(snd.sound, 100, false, snd.gain, 0, snd.pitch);
 		audio_play_sound(snd_weap, 100, false, 0.5);
-		
-		if (!current_weapon.silent)
-		{
-			
-		}
 	}
 }
 

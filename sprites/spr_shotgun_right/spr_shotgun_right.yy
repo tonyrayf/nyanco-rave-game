@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_shotgun_right",
   "bboxMode":0,
-  "bbox_bottom":22,
+  "bbox_bottom":21,
   "bbox_left":0,
   "bbox_right":92,
   "bbox_top":0,
