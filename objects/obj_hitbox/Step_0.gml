@@ -4,6 +4,7 @@ if (hp <= 0) {
 	} else {
 		layer_sequence_destroy(parent_sequenceID);//or destroy complete sequence
 	}
+	instance_destroy();
 } else if (hp<maxhp){
 	seq_inst.is_damaged = true;
 }

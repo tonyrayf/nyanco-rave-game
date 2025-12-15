@@ -80,14 +80,9 @@ if (setup)
 		path_start(global.paths_map[?name],speed_idle,path_action_reverse,0);
 	}
 	
-	if(direction==180){
-		seq_dir = dirs.Left;
-	} else if(direction==0){
-		seq_dir = dirs.Right;
-		layer_sequence_xscale(seq,-1);
-		image_xscale=-1;
+	if(seq_dir==dirs.Left){
+		direction = 180;
 	}
-	
 }
 
 if(current_state!=states.Detected and seq_inst!=undefined and seq_inst.is_damaged){

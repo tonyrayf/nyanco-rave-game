@@ -11,11 +11,6 @@ acceleration_g = 1;
 
 setup = true;
 name = "default_name";
-enum states {
-	Idle,
-	Search,
-	Detected
-}
 suspiciousness = 0;
 
 current_state = states.Idle;//
@@ -26,10 +21,6 @@ search_to_idle=1800;//
 idle_sus_return = 400;//time it takes to suspiciousness to go back
 search_sus_return = 600;//
 
-seq = layer_sequence_create(layer, x, y, sq_enemy_regular);
+seq = layer_sequence_create(layer, x, y, sq_enemy_shielded);
 seq_inst = layer_sequence_get_instance(seq);
-enum dirs {
-	Left,
-	Right
-}
-seq_dir = dirs.Right;
+seq_dir = dirs.Left;

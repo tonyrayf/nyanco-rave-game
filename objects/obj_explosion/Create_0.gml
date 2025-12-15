@@ -14,18 +14,18 @@ audio_play_sound(exp_c4_bang, 100, false, 1);
 
 
 var insts = ds_list_create();
-instance_place_list(x, y, [obj_player, obj_hitbox, obj_enemy], insts, false);
+instance_place_list(x, y, [obj_player, obj_hitbox, obj_enemy_regular], insts, false);
 
 var i = 0;
 repeat (ds_list_size(insts))
 {
 	var inst = insts[| i++];
-	if (inst.object_index != obj_enemy)
+	if (inst.object_index != obj_enemy_regular)
 	{
 		var dist = point_distance(x, y, inst.x, inst.y);
 	
 		if (dist >= radius) inst.hp -= damage;
-		else inst.hp -= damage * (1 - dist / radius);
+		else inst.hp -= ceil(damage * (1 - dist / radius) - 0.5);
 	}
 	else
 	{
