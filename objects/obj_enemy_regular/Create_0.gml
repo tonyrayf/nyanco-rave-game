@@ -1,5 +1,5 @@
 hp = 150;//
-my_weapon = variable_clone(Equipment.smg);//
+my_weapon = variable_clone(Equipment.pistol);//
 speed_idle = 2;//speeds in different states
 speed_search = 4;//comment means that this variable can be used to configure
 speed_detected = 6;//

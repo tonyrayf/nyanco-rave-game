@@ -144,12 +144,9 @@ switch current_state{
 					with (instance_create_layer(x-50*image_xscale, y-100, obj_player.layer, obj_bullet)){
 						var spread_dir = arctan(_s.current_spread / _s.my_weapon.range) * DEG_PER_RAD;
 						if(_s.image_xscale==1){
-							//direction = random_range(180-spread_dir,180+spread_dir);
-							direction = 180;
+							direction = random_range(180-spread_dir,180+spread_dir);
 						} else if (_s.image_xscale==-1){
-							//direction = random_range( - spread_dir,spread_dir);
-							direction = 0;
-							show_debug_message("RIGHT");
+							direction = random_range( - spread_dir,spread_dir);
 						}
 						
 						var vel = _s.my_weapon.velocity;
@@ -172,10 +169,19 @@ switch current_state{
 				var snd = my_weapon.shot_sound;
 				audio_play_sound(snd.sound, 100, false, snd.gain, 0, snd.pitch);
 				audio_play_sound(snd_weap, 100, false, 0.5);
+			} else if (alarm_get(1)==-1 and my_weapon.current_ammo <= 0 and not is_reloading) {
+				is_reloading = true;
+				alarm_set(2, my_weapon.reload_time * game_get_speed(gamespeed_fps));
+				if (variable_struct_exists(my_weapon, "reload_sound")) audio_play_sound(my_weapon.reload_sound, 100, false, 0.2);
 			}
 		} else {
 			if(self.path_speed==0){
 				self.path_speed=speed_detected;
+			}
+			if(not is_reloading and my_weapon.current_ammo<my_weapon.capacity*1){
+				is_reloading = true;
+				alarm_set(2, my_weapon.reload_time * game_get_speed(gamespeed_fps));
+				if (variable_struct_exists(my_weapon, "reload_sound")) audio_play_sound(my_weapon.reload_sound, 100, false, 0.2);
 			}
 		}
 	break;
