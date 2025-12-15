@@ -11,7 +11,6 @@
     {"name":"inst_72890A0A1","path":"rooms/rm_ricochet_test/rm_ricochet_test.yy",},
     {"name":"inst_7EA7CC69_1","path":"rooms/rm_ricochet_test/rm_ricochet_test.yy",},
     {"name":"inst_2F9AB294_1","path":"rooms/rm_ricochet_test/rm_ricochet_test.yy",},
-    {"name":"inst_198AF32F1","path":"rooms/rm_ricochet_test/rm_ricochet_test.yy",},
     {"name":"inst_A530744_1","path":"rooms/rm_ricochet_test/rm_ricochet_test.yy",},
     {"name":"inst_29258AA6_1","path":"rooms/rm_ricochet_test/rm_ricochet_test.yy",},
     {"name":"inst_559FD5F4_1","path":"rooms/rm_ricochet_test/rm_ricochet_test.yy",},
@@ -30,7 +29,6 @@
       ],"layers":[],"name":"General","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"InvisibleObjects","depth":100,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_7EA7CC69_1","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7EA7CC69_1","objectId":{"name":"obj_fade","path":"objects/obj_fade/obj_fade.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":3.0,"scaleY":3.0,"x":0.0,"y":-128.0,},
-        {"$GMRInstance":"v4","%Name":"inst_198AF32F1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_198AF32F1","objectId":{"name":"obj_weapon","path":"objects/obj_weapon/obj_weapon.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":0.0849399,"scaleY":0.0849399,"x":80.0,"y":720.0,},
         {"$GMRInstance":"v4","%Name":"inst_29258AA6_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_29258AA6_1","objectId":{"name":"obj_device","path":"objects/obj_device/obj_device.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":3.0,"scaleY":3.0,"x":64.0,"y":-128.0,},
       ],"layers":[],"name":"InvisibleObjects","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Enemies","assets":[],"depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Enemies","properties":[],"resourceType":"GMRAssetLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
