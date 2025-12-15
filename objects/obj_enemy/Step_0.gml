@@ -82,6 +82,9 @@ switch current_state{
 	case states.Idle:
 		if(enemy_FOV.is_object_in_zone){
 			suspiciousness++;
+			if(self.path_speed!=0){
+				self.path_speed=0;
+			}
 			if(suspiciousness>=idle_to_search){
 				current_state=states.Search;
 				suspiciousness=0;
@@ -89,6 +92,9 @@ switch current_state{
 				self.path_speed = speed_search;
 			}
 		} else {
+			if(self.path_speed==0){
+				self.path_speed=speed_idle;
+			}
 			if(suspiciousness>0){
 				suspiciousness-=idle_to_search/idle_sus_return;
 			} else if (suspiciousness<0){
