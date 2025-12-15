@@ -68,6 +68,8 @@
   },
   "name":"NYANCO RAVE",
   "resources":[
+    {"id":{"name":"ac_idle","path":"animcurves/ac_idle/ac_idle.yy",},},
+    {"id":{"name":"ac_jump","path":"animcurves/ac_jump/ac_jump.yy",},},
     {"id":{"name":"f_main","path":"fonts/f_main/f_main.yy",},},
     {"id":{"name":"Camera","path":"objects/Camera/Camera.yy",},},
     {"id":{"name":"Debug","path":"objects/Debug/Debug.yy",},},

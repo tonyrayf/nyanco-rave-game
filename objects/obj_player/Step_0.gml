@@ -52,6 +52,12 @@ if (place_meeting(x + speed_x, y, global.solid_objects)) //Collision check
 var state_jump = true;
 
 // States condition
+if (speed_y == 0)
+{
+	if (speed_x == 0) current_state = player_states.idle;
+	else current_state = player_states.walk;
+}
+
 if (current_state != player_states.slide and speed_y == 0)
 {	
 	if (Input.key_run)
@@ -84,12 +90,28 @@ if (current_state == player_states.run and last_direction_x != obj_shoot_area.di
 // Execute state
 switch (current_state)
 {
+	case player_states.idle: {
+		if (!Input.key_shoot)
+		{
+			current_animcurve = ac_idle;
+			current_animcurve_duration = 2;
+		}
+		else
+		{
+			current_animcurve = -1;
+			current_animcurve_duration = -1;	
+		}
+		break;
+	}
 	case player_states.walk: {
 		speed_x = obj_shoot_area.direction_x == RIGHT
 			? clamp(speed_x, -top_speed_x_back, top_speed_x_forward)
 			: clamp(speed_x, -top_speed_x_forward, top_speed_x_back);
 		
 		image_yscale = start_yscale;
+		
+		current_animcurve = -1;
+		current_animcurve_duration = -1;
 		break;
 	}
 	
@@ -99,6 +121,9 @@ switch (current_state)
 			: clamp(speed_x, -top_speed_x_forward * run_multi, top_speed_x_back);
 		
 		image_yscale = start_yscale * 0.9;
+		
+		current_animcurve = -1;
+		current_animcurve_duration = -1;
 		break;
 	}
 	
@@ -109,6 +134,9 @@ switch (current_state)
 		
 		image_yscale = start_yscale * 0.7;
 		state_jump = false;
+		
+		current_animcurve = -1;
+		current_animcurve_duration = -1;
 		break;
 	}
 	case player_states.slide: {
@@ -171,6 +199,9 @@ if (can_jump and !place_meeting(x, y - 1, global.solid_objects) and state_jump)
 		alarm_set(alarms.early_jump, 0);
 		
 		audio_play_sound(global.jump_sounds[irandom(4)], 100, false);
+		
+		current_animcurve = ac_jump;
+		current_animcurve_duration = 0.35;
 	}
 	
 	//Velocity Cut
@@ -216,3 +247,20 @@ if (hp <= 0)
 
 if (obj_shoot_area.direction_x == RIGHT) image_index = 1;
 else image_index = 0;
+
+if (current_animcurve_duration != -1 and alarm_get(4) == -1)
+{
+	alarm_set(4, current_animcurve_duration * game_get_speed(gamespeed_fps));	
+}
+
+if (current_animcurve != -1)
+{
+	var time = alarm_get(4) / current_animcurve_duration / game_get_speed(gamespeed_fps);
+	image_xscale = animcurve_channel_evaluate(animcurve_get_channel(current_animcurve, "xscale"), time);
+	image_yscale = animcurve_channel_evaluate(animcurve_get_channel(current_animcurve, "yscale"), time);
+}
+else
+{
+	image_xscale += (1 - image_xscale) * 0.5;
+	image_yscale += (1 - image_yscale) * 0.5;
+}

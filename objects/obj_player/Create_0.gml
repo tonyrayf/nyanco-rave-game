@@ -19,6 +19,7 @@ acceleration_x = 1;
 deceleration_x = 1.25;
 
 enum player_states {
+	idle,
 	walk,
 	crouch,
 	run,
@@ -58,3 +59,6 @@ start_xscale = image_xscale;
 start_yscale = image_yscale;
 
 hp = 100;
+
+current_animcurve = -1;
+current_animcurve_duration = -1;

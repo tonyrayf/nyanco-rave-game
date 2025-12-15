@@ -39,4 +39,4 @@ if (instance_exists(obj_device) and variable_struct_exists(obj_device.current_de
 	draw_text(device_x, device_y, $"{obj_device.current_device.current_number}/{obj_device.current_device.total_number}");
 }
 
-draw_text(hp_x, hp_y, obj_player.hp);
+draw_text(ceil(hp_x - 0.5), ceil(hp_y - 0.5), obj_player.hp);
