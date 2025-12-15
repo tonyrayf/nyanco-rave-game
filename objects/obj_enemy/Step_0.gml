@@ -76,6 +76,15 @@ if (setup)
 	if(name!="default_name" and ds_map_exists(global.paths_map,name)){
 		path_start(global.paths_map[?name],speed_idle,path_action_reverse,0);
 	}
+	
+	if(direction==180){
+		seq_dir = dirs.Left;
+	} else if(direction==0){
+		seq_dir = dirs.Right;
+		layer_sequence_xscale(seq,-1);
+		image_xscale=-1;
+	}
+	
 }
 
 switch current_state{
@@ -124,3 +133,13 @@ switch current_state{
 
 layer_sequence_x(seq, x);
 layer_sequence_y(seq, y);
+
+if(direction==180 and seq_dir==dirs.Right){
+	layer_sequence_xscale(seq,1);
+	image_xscale = 1;
+	seq_dir=dirs.Left;
+} else if(direction==0 and seq_dir==dirs.Left){
+	layer_sequence_xscale(seq,-1);
+	image_xscale = -1;
+	seq_dir=dirs.Right;
+}

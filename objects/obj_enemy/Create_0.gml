@@ -1,7 +1,7 @@
 hp = 150;
-speed_idle = 4;
-speed_search = 6;
-speed_detected = 10;
+speed_idle = 2;
+speed_search = 4;
+speed_detected = 6;
 
 speed_x = 0;
 speed_y = 0;
@@ -26,3 +26,8 @@ idle_sus_return = 400;
 search_sus_return = 600;
 
 seq = layer_sequence_create(layer, x, y, sq_enemy_regular);
+enum dirs {
+	Left,
+	Right
+}
+seq_dir = dirs.Right;
