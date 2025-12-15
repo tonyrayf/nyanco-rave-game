@@ -25,7 +25,7 @@ repeat (ds_list_size(insts))
 		var dist = point_distance(x, y, inst.x, inst.y);
 	
 		if (dist >= radius) inst.hp -= damage;
-		else inst.hp -= ceil(damage * (1 - dist / radius) - 0.5);
+		else inst.hp -= damage * (1 - dist / radius);
 	}
 	else
 	{
