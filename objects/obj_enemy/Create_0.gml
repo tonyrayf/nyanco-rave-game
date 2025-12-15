@@ -1,4 +1,4 @@
-hp = 100;
+hp = 150;
 speed_idle = 4;
 speed_search = 6;
 speed_detected = 10;

@@ -1,8 +1,9 @@
 draw_set_color(c_white);
 draw_set_alpha(0.8);
+draw_self();
 
 var sight_x = obj_player.x;
-var sight_y = obj_player.bbox_top + 60;
+var sight_y = obj_player.aim_origin_y;
 throw_direction = point_direction(sight_x, sight_y, x, y);
 var dir = degtorad(throw_direction);
 

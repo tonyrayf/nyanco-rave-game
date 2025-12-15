@@ -23,3 +23,4 @@ key_device_release = key_input_check_released(keys_device);
 key_device_wheel = key_input_check(keys_device_wheel);
 
 key_crouch_press = key_input_check_pressed(keys_crouch);
+key_crouch = key_input_check(keys_crouch);

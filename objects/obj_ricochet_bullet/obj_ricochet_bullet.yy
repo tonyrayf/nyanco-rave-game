@@ -10,8 +10,8 @@
   "name":"obj_ricochet_bullet",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Shells",
+    "path":"folders/Objects/Shells.yy",
   },
   "parentObjectId":{
     "name":"obj_bullet",

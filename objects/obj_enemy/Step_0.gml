@@ -50,28 +50,27 @@ y += speed_y;
 
 #endregion
 
-if(setup){
+if (setup)
+{
 	setup = false;
-	
-	var head = instance_create_layer(0, 0, layer, obj_hitbox);
-	head.hp = hp;
 	
 	enemy_FOV = get_inst_from_seq(seq, obj_check_hitbox);
 	
+	var parent_hp = hp;
 	with (get_inst_from_seq_by_name(seq, "body"))
 	{
 		image_alpha = 0;
-		hp = hp;
+		hp = parent_hp;
 	}
 	with (get_inst_from_seq_by_name(seq, "head"))
 	{
 		image_alpha = 0;
-		hp = hp * 0.3;
+		hp = parent_hp * 0.3;
 	}
 	with (get_inst_from_seq_by_name(seq, "legs"))
 	{
 		image_alpha = 0;
-		hp = hp * 1.25;
+		hp = parent_hp * 1.25;
 	}
 	
 	if(name!="default_name" and ds_map_exists(global.paths_map,name)){
@@ -80,7 +79,7 @@ if(setup){
 }
 
 switch current_state{
-	case 0:
+	case states.Idle:
 		if(enemy_FOV.is_object_in_zone){
 			suspiciousness++;
 			if(suspiciousness>=idle_to_search){
@@ -97,7 +96,7 @@ switch current_state{
 			}
 		}
 	break;
-	case 1:
+	case states.Search:
 		if(enemy_FOV.is_object_in_zone){
 			suspiciousness++;
 			if(suspiciousness>=search_to_detected){

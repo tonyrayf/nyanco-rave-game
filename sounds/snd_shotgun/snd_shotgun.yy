@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_shotgun",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"Shoot&Hit",
+    "path":"folders/Sounds/Shoot&Hit.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

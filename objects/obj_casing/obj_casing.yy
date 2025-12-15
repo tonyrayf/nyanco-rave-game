@@ -10,8 +10,8 @@
   "name":"obj_casing",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Shells",
+    "path":"folders/Objects/Shells.yy",
   },
   "parentObjectId":null,
   "persistent":false,

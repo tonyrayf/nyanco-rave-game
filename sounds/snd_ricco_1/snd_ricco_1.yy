@@ -14,13 +14,13 @@
   "exportDir":"",
   "name":"snd_ricco_1",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"Shoot&Hit",
+    "path":"folders/Sounds/Shoot&Hit.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"snd_ricco_1.ogg",
-  "volume":1.0,
+  "volume":0.3,
 }

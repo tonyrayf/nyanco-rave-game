@@ -11,8 +11,8 @@
   "name":"obj_bullet",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Shells",
+    "path":"folders/Objects/Shells.yy",
   },
   "parentObjectId":null,
   "persistent":false,

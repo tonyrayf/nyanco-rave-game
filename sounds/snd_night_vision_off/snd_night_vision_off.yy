@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_night_vision_off",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"Devices",
+    "path":"folders/Sounds/Devices.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

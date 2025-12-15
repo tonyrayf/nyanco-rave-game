@@ -1,2 +1,2 @@
-current_device = Equipment.impact_grenade;
+current_device = variable_clone(Equipment.impact_grenade);
 last_device = current_device;

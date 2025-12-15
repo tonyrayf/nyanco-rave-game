@@ -9,4 +9,4 @@ device_y = 900;
 hp_x = 300;
 hp_y = 900;
 
-thermal_googles_on = false;
+thermal_goggles_on = false;

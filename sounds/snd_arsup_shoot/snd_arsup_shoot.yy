@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_arsup_shoot",
   "parent":{
-    "name":"NYANCO RAVE",
-    "path":"NYANCO RAVE.yyp",
+    "name":"Shoot&Hit",
+    "path":"folders/Sounds/Shoot&Hit.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

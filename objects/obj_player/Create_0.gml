@@ -13,7 +13,7 @@ last_direction_x  = 0;
 
 top_speed_x_def = 8;		
 top_speed_x_forward = top_speed_x_def;
-top_speed_x_back = top_speed_x_def / 1.5;
+top_speed_x_back = top_speed_x_def / 1.2;
 
 acceleration_x = 1;
 deceleration_x = 1.25;
@@ -21,22 +21,25 @@ deceleration_x = 1.25;
 enum player_states {
 	walk,
 	crouch,
-	run
+	run,
+	slide,
 }
 current_state = player_states.walk;
 
-run_multi = 1.35;
+run_multi = 1.5;
 crouch_multi = 0.7;
 
 
 //Y
 speed_y = 0;
 
-acceleration_g = 1;
+acceleration_g = 0.75;
 
 var jump_height = 0.75*sprite_height;
 def_jump_start_speed = ceil(sqrt(2 * acceleration_g * jump_height) - 0.5);  //Physics formula: v0 = sqrt(2*g*h)
 jump_start_speed = def_jump_start_speed;
+
+aim_origin_y = bbox_top + 60;
 
 
 //Limits

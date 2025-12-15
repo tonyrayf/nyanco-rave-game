@@ -3,17 +3,17 @@ draw_self();
 var _sus_percent;
 yOffset = 250;
 switch current_state{
-	case 0:
+	case states.Idle:
 		if(suspiciousness>0){
 			draw_sprite(spr_idle,-1,x,y-yOffset-15);
 			_sus_percent = suspiciousness/idle_to_search;
 		}
 	break;
-	case 1:
+	case states.Search:
 		draw_sprite(spr_search,-1,x,y-yOffset-15);
 		_sus_percent = suspiciousness/search_to_detected;
 	break;
-	case 2:
+	case states.Detected:
 		draw_sprite(spr_detected,-1,x,y-yOffset-15);
 	break;
 }

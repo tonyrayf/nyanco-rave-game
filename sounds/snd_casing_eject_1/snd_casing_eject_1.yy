@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_casing_eject_1",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"Casing",
+    "path":"folders/Sounds/Casing.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

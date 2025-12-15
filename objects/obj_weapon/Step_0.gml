@@ -23,15 +23,18 @@ if (mods_setup)
 	}
 }
 
-if (Input.key_first_weapon)
+if (!is_reloading)
+{
+	if (Input.key_first_weapon)
 {
 	current_weapon = first_weapon;
 	current_mods = first_w_mods;
 }
-else if (Input.key_second_weapon)
+	else if (Input.key_second_weapon)
 {
 	current_weapon = second_weapon;
 	current_mods = second_w_mods;
+}
 }
 
 if (last_weapon != current_weapon)
@@ -130,6 +133,8 @@ or (current_weapon.current_ammo <= 0 and not is_reloading)
 	is_reloading = true;
 	
 	alarm_set(1, current_weapon.reload_time * game_get_speed(gamespeed_fps));
+	
+	if (variable_struct_exists(current_weapon, "reload_sound")) audio_play_sound(current_weapon.reload_sound, 100, false, 0.2);
 }
 
 #endregion
@@ -137,7 +142,7 @@ or (current_weapon.current_ammo <= 0 and not is_reloading)
 #region Weapon view
 
 x = obj_shoot_area.direction_x == RIGHT ? obj_player.bbox_right - origin_offset : obj_player.bbox_left + origin_offset;
-y = obj_player.bbox_top + 60;
+y = obj_player.aim_origin_y;
 
 sight_x = x + barrel_dist * dir_cos;
 sight_y = y - barrel_dist * dir_sin;

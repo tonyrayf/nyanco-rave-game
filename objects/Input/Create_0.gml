@@ -14,4 +14,4 @@ keys_device_wheel = [ord("Q")]; key_device_wheel = false;
 keys_first_weapon = [ord("1")]; key_first_weapon = false;
 keys_second_weapon = [ord("2")]; key_first_weapon = false;
 
-keys_crouch = [ord("C")]; key_crouch_press = false;
+keys_crouch = [ord("C")]; key_crouch_press = false; key_crouch = false;

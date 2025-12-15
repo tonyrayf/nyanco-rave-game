@@ -9,8 +9,9 @@ if (draw_setup)
 	draw_set_font(f_main);
 }
 
-// Thermal googles
-if (thermal_googles_on)
+// Thermal goggles
+layer_set_visible("BG", !thermal_goggles_on);
+if (thermal_goggles_on)
 {
 	shader_set(sh_thermal);
 	shader_set_uniform_f(shader_get_uniform(sh_thermal, "u_time"), current_time * 0.001);

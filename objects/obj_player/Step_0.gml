@@ -5,6 +5,9 @@ direction_x = (Input.key_right - Input.key_left) * can_move;
 
 
 //Smooth movement
+if (current_state != player_states.slide)
+{
+
 if (direction_x != 0)
 {
 	speed_x += acceleration_x * direction_x;
@@ -15,6 +18,8 @@ else if (can_decelerate)
 	if (sign(speed_x) == last_direction_x) speed_x += -deceleration_x * last_direction_x;
 	
 	else speed_x = 0;  //if speed becomes negative, set it to zero
+}
+
 }
 
 
@@ -44,20 +49,39 @@ if (place_meeting(x + speed_x, y, global.solid_objects)) //Collision check
 
 #region States
 
-if (Input.key_crouch_press and place_meeting(x, y + 1, global.solid_objects))
-{
-	current_state = current_state == player_states.walk ? player_states.crouch : player_states.walk;
-}
+var state_jump = true;
 
-if (Input.key_run and place_meeting(x, y + 1, global.solid_objects))
-{
-	current_state = player_states.run;
+// States condition
+if (current_state != player_states.slide and speed_y == 0)
+{	
+	if (Input.key_run)
+		current_state = player_states.run;
+	
+	if (Input.key_run and Input.key_crouch_press)
+		current_state = player_states.slide;
+	
+	if (!Input.key_run and Input.key_crouch_press)
+		current_state = current_state == player_states.walk ? player_states.crouch : player_states.walk;
+	
+	if (Input.key_run_release)
+		current_state = player_states.walk;
 }
-if (Input.key_run_release)
+else if (Input.key_crouch_press or Input.key_jump_press)
 {
+	state_jump = false;
+	current_state = player_states.walk;
+	audio_play_sound(snd_slide_stop, 100, false);
+}
+if (Input.key_jump_press and current_state == player_states.crouch)
+{
+	state_jump = false;
 	current_state = player_states.walk;
 }
 
+if (current_state == player_states.run and last_direction_x != obj_shoot_area.direction_x)
+	current_state = player_states.walk;
+
+// Execute state
 switch (current_state)
 {
 	case player_states.walk: {
@@ -65,16 +89,16 @@ switch (current_state)
 			? clamp(speed_x, -top_speed_x_back, top_speed_x_forward)
 			: clamp(speed_x, -top_speed_x_forward, top_speed_x_back);
 		
-		image_yscale = start_xscale;
+		image_yscale = start_yscale;
 		break;
 	}
 	
 	case player_states.run: {
 		speed_x = obj_shoot_area.direction_x == RIGHT
-			? clamp(speed_x, -top_speed_x_back * run_multi, top_speed_x_forward * run_multi)
-			: clamp(speed_x, -top_speed_x_forward * run_multi, top_speed_x_back * run_multi);
+			? clamp(speed_x, -top_speed_x_back, top_speed_x_forward * run_multi)
+			: clamp(speed_x, -top_speed_x_forward * run_multi, top_speed_x_back);
 		
-		image_yscale = start_xscale * 0.9;
+		image_yscale = start_yscale * 0.9;
 		break;
 	}
 	
@@ -83,14 +107,32 @@ switch (current_state)
 			? clamp(speed_x, -top_speed_x_back * crouch_multi, top_speed_x_forward * crouch_multi)
 			: clamp(speed_x, -top_speed_x_forward * crouch_multi, top_speed_x_back * crouch_multi);
 		
-		image_yscale = start_xscale * 0.5;
+		image_yscale = start_yscale * 0.7;
+		state_jump = false;
+		break;
+	}
+	case player_states.slide: {
+		var slide_dir = sign(speed_x);
+        if (slide_dir != 0)
+		{
+            speed_x = slide_dir * top_speed_x_forward * run_multi;  // мощный слайд
+        }
+		
+		if (alarm_get(3) == -1)
+		{
+			alarm_set(3, 1 * game_get_speed(gamespeed_fps));
+			audio_play_sound(snd_slide, 100, false);
+		}
+		
+		image_yscale = start_yscale * 0.4;
+		state_jump = false;
 		break;
 	}
 }
 
 #endregion
 
-if (direction_x != 0 and alarm_get(2) == -1)
+if (direction_x != 0 and speed_y == 0 and alarm_get(2) == -1)
 {
 	switch (current_state)
 	{
@@ -109,7 +151,7 @@ speed_y += acceleration_g;
 
 
 //Jump
-if (can_jump and !place_meeting(x, y - 1, global.solid_objects))
+if (can_jump and !place_meeting(x, y - 1, global.solid_objects) and state_jump)
 {
 	//Late jump
 	if (place_meeting(x, y + 1, global.solid_objects))
@@ -162,6 +204,7 @@ else
 
 y += speed_y;
 
+aim_origin_y = bbox_top + 60;
 
 #endregion
 

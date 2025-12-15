@@ -3,11 +3,11 @@ active = true;
 dir_cos = 0;
 dir_sin = 0;
 
-current_weapon = variable_clone(Equipment.smg);
+current_weapon = variable_clone(Equipment.assault_rifle);
 last_weapon = {};
 
 first_weapon = current_weapon; first_w_mods = [Equipment.suppressor];
-second_weapon = variable_clone(Equipment.pistol); second_w_mods = [Equipment.suppressor];
+second_weapon = variable_clone(Equipment.sniper_rifle); second_w_mods = [Equipment.suppressor, Equipment.ricochet_ammo];
 
 current_mods = first_w_mods;
 

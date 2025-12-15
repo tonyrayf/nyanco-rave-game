@@ -6,7 +6,7 @@ pistol = {
 	fire_rate : 1000,			// rounds/minute
 	current_ammo : 8,
 	capacity : 8,				// max ammo
-	reload_time : 0.7,			// in seconds
+	reload_time : 2,			// in seconds
 	auto : false,
 	velocity : 40,				// px/step
 	velocity_spread : 0,		// in percents
@@ -21,6 +21,7 @@ pistol = {
 		pitch : 1,
 		gain : 1
 	},
+	reload_sound : snd_pistol_reload,
 	
 	shell_sprite : spr_9mm_bullet,
 	weapon_sprite_right : spr_pistol_right,
@@ -35,14 +36,14 @@ smg = {
 	fire_rate : 600,
 	current_ammo : 40,
 	capacity : 40,
-	reload_time : 1.4,
+	reload_time : 2.1,
 	auto : true,
 	velocity : 40,
 	velocity_spread : 0,
 	shells_in_shot : 1,
 	min_spread : 12,
-	max_spread : 100,
-	spread_jump : 40,
+	max_spread : 90,
+	spread_jump : 30,
 	spread_lerp : 0.2,
 	range : 500,
 	shot_sound : {
@@ -50,6 +51,7 @@ smg = {
 		pitch : 1,
 		gain : 0.6
 	},
+	reload_sound : snd_smg_reload,
 	
 	shell_sprite : spr_9mm_bullet,
 	weapon_sprite_right : spr_iso_right,
@@ -58,27 +60,28 @@ smg = {
 	shake_amplitude : 2,
 }
 
-auto_rifle = {
+assault_rifle = {
 	silent : false,
 	damage : 40,
 	fire_rate : 400,
 	current_ammo : 30,
 	capacity : 30,
-	reload_time : 1.7,
+	reload_time : 2.6,
 	auto : true,
 	velocity : 50,
 	velocity_spread : 0,
 	shells_in_shot : 1,
 	min_spread : 12,
 	max_spread : 60,
-	spread_jump : 20,
+	spread_jump : 30,
 	spread_lerp : 0.2,
-	range : 700,
+	range : 600,
 	shot_sound : {
 		sound : snd_arsup_shoot,
 		pitch : 1.2,
 		gain : 1
 	},
+	reload_sound : snd_assault_rifle_reload,
 	
 	shell_sprite : spr_ar_bullet,
 	weapon_sprite_right : spr_kilo_right,
@@ -90,11 +93,11 @@ auto_rifle = {
 
 sniper_rifle = {
 	silent : false,
-	damage : 100,
+	damage : 200,
 	fire_rate : 60,
 	current_ammo : 5,
 	capacity : 5,
-	reload_time : 2.2,
+	reload_time : 4.2,
 	auto : false,
 	velocity : 60,
 	velocity_spread : 0,
@@ -109,6 +112,7 @@ sniper_rifle = {
 		pitch : 1,
 		gain : 1
 	},
+	reload_sound : snd_sniper_rifle_reload,
 	
 	shell_sprite : spr_lapua_bullet,
 	weapon_sprite_right : spr_spr_right,
@@ -121,15 +125,15 @@ sniper_rifle = {
 
 shotgun = {
 	silent : false,
-	damage : 10,
+	damage : 13,
 	fire_rate : 80,
 	current_ammo : 7,
 	capacity : 7,
-	reload_time : 2.2,
+	reload_time : 4.8,
 	auto : false,
 	velocity : 40,
 	velocity_spread : 5,
-	shells_in_shot : 20,
+	shells_in_shot : 15,
 	min_spread : 70,
 	max_spread : 70,
 	spread_jump : 0,
@@ -140,6 +144,7 @@ shotgun = {
 		pitch : 1,
 		gain : 1
 	},
+	reload_sound : snd_shotgun_reload,
 	
 	shell_sprite : spr_pellete,
 	weapon_sprite_right : spr_shotgun_right,
@@ -153,6 +158,7 @@ admin_gun = {
 	silent : true,
 	damage : 1000,
 	fire_rate : 800,
+	current_ammo : 999,
 	capacity : 999,
 	reload_time : 0.1,
 	auto : true,
@@ -181,6 +187,7 @@ admin_gun2 = {
 	silent : false,
 	damage : 1000,
 	fire_rate : 800,
+	current_ammo : 999,
 	capacity : 999,
 	reload_time : 0.1,
 	auto : true,
@@ -322,9 +329,9 @@ thermal_googles = {
 	{
 		if (Input.key_device_press)
 		{
-			GUI.thermal_googles_on = !GUI.thermal_googles_on;
+			GUI.thermal_goggles_on = !GUI.thermal_goggles_on;
 			
-			audio_play_sound(GUI.thermal_googles_on ? snd_night_vision_on : snd_night_vision_off, 100, false, 1);
+			audio_play_sound(GUI.thermal_goggles_on ? snd_night_vision_on : snd_night_vision_off, 100, false, 1);
 		
 			var cldwn = cooldown;
 			with (obj_device)

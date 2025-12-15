@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"exp_c4_bang",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"Devices",
+    "path":"folders/Sounds/Devices.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
