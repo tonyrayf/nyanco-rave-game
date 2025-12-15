@@ -61,30 +61,35 @@ if (setup)
 	{
 		image_alpha = 0;
 		hp = parent_hp;
+		maxhp = hp;
 	}
 	with (get_inst_from_seq_by_name(seq, "head"))
 	{
 		image_alpha = 0;
 		hp = parent_hp * 0.3;
+		maxhp = hp;
 	}
 	with (get_inst_from_seq_by_name(seq, "legs"))
 	{
 		image_alpha = 0;
 		hp = parent_hp * 1.25;
+		maxhp = hp;
 	}
 	
 	if(name!="default_name" and ds_map_exists(global.paths_map,name)){
 		path_start(global.paths_map[?name],speed_idle,path_action_reverse,0);
 	}
 	
-	if(direction==180){
-		seq_dir = dirs.Left;
-	} else if(direction==0){
-		seq_dir = dirs.Right;
-		layer_sequence_xscale(seq,-1);
-		image_xscale=-1;
+	if(seq_dir==dirs.Left){
+		direction = 180;
 	}
-	
+}
+
+if(current_state!=states.Detected and seq_inst!=undefined and seq_inst.is_damaged){
+	suspiciousness=0;
+	current_state=states.Detected;
+	alarm[0] = -1;
+	self.path_speed = speed_detected;
 }
 
 switch current_state{
