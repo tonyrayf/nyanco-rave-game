@@ -76,12 +76,25 @@ if (setup)
 	if(name!="default_name" and ds_map_exists(global.paths_map,name)){
 		path_start(global.paths_map[?name],speed_idle,path_action_reverse,0);
 	}
+	
+	if(direction==180){
+		seq_dir = dirs.Left;
+	} else if(direction==0){
+		seq_dir = dirs.Right;
+		layer_sequence_xscale(seq,-1);
+		image_xscale=-1;
+	}
+	
 }
 
 switch current_state{
 	case states.Idle:
 		if(enemy_FOV.is_object_in_zone){
-			suspiciousness++;
+			show_debug_message(name+" "+string(point_distance(x,y,obj_player.x,obj_player.y)));
+			suspiciousness+=1000/point_distance(x,y,obj_player.x,obj_player.y);
+			if(self.path_speed!=0){
+				self.path_speed=0;
+			}
 			if(suspiciousness>=idle_to_search){
 				current_state=states.Search;
 				suspiciousness=0;
@@ -89,6 +102,9 @@ switch current_state{
 				self.path_speed = speed_search;
 			}
 		} else {
+			if(self.path_speed==0){
+				self.path_speed=speed_idle;
+			}
 			if(suspiciousness>0){
 				suspiciousness-=idle_to_search/idle_sus_return;
 			} else if (suspiciousness<0){
@@ -98,7 +114,7 @@ switch current_state{
 	break;
 	case states.Search:
 		if(enemy_FOV.is_object_in_zone){
-			suspiciousness++;
+			suspiciousness+=1000/point_distance(x,y,obj_player.x,obj_player.y);
 			if(suspiciousness>=search_to_detected){
 				suspiciousness=0;
 				current_state=states.Detected;
@@ -117,3 +133,13 @@ switch current_state{
 
 layer_sequence_x(seq, x);
 layer_sequence_y(seq, y);
+
+if(direction==180 and seq_dir==dirs.Right){
+	layer_sequence_xscale(seq,1);
+	image_xscale = 1;
+	seq_dir=dirs.Left;
+} else if(direction==0 and seq_dir==dirs.Left){
+	layer_sequence_xscale(seq,-1);
+	image_xscale = -1;
+	seq_dir=dirs.Right;
+}
