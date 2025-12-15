@@ -51,46 +51,12 @@ if (place_meeting(x + speed_x, y, global.solid_objects)) //Collision check
 
 var state_jump = true;
 
-// States condition
-if (speed_y == 0)
-{
-	if (speed_x == 0) current_state = player_states.idle;
-	else current_state = player_states.walk;
-}
-
-if (current_state != player_states.slide and speed_y == 0)
-{	
-	if (Input.key_run)
-		current_state = player_states.run;
-	
-	if (Input.key_run and Input.key_crouch_press)
-		current_state = player_states.slide;
-	
-	if (!Input.key_run and Input.key_crouch_press)
-		current_state = current_state == player_states.walk ? player_states.crouch : player_states.walk;
-	
-	if (Input.key_run_release)
-		current_state = player_states.walk;
-}
-else if (Input.key_crouch_press or Input.key_jump_press)
-{
-	state_jump = false;
-	current_state = player_states.walk;
-	audio_play_sound(snd_slide_stop, 100, false);
-}
-if (Input.key_jump_press and current_state == player_states.crouch)
-{
-	state_jump = false;
-	current_state = player_states.walk;
-}
-
-if (current_state == player_states.run and last_direction_x != obj_shoot_area.direction_x)
-	current_state = player_states.walk;
-
 // Execute state
 switch (current_state)
 {
 	case player_states.idle: {
+		speed_x = clamp(speed_x, -top_speed_x_forward, top_speed_x_forward);
+		
 		if (!Input.key_shoot)
 		{
 			current_animcurve = ac_idle;
@@ -101,6 +67,19 @@ switch (current_state)
 			current_animcurve = -1;
 			current_animcurve_duration = -1;	
 		}
+		
+		// Switch state
+		if (speed_x != 0)
+		{
+			current_state = player_states.walk;
+			if (Input.key_run) current_state = player_states.run;
+		}
+		
+		if (Input.key_crouch_press)
+		{
+			current_state = player_states.crouch;
+		}
+		
 		break;
 	}
 	case player_states.walk: {
@@ -112,6 +91,12 @@ switch (current_state)
 		
 		current_animcurve = -1;
 		current_animcurve_duration = -1;
+		
+		// Switch state
+		if (Input.key_crouch_press) current_state = player_states.crouch;
+		if (Input.key_run and obj_shoot_area.direction_x == last_direction_x) current_state = player_states.run;
+		if (speed_x == 0) current_state = player_states.idle;
+		
 		break;
 	}
 	
@@ -124,6 +109,13 @@ switch (current_state)
 		
 		current_animcurve = -1;
 		current_animcurve_duration = -1;
+		
+		// Switch state
+		if (Input.key_crouch_press) current_state = player_states.slide;
+		if (obj_shoot_area.direction_x != last_direction_x) current_state = player_states.walk;
+		if (Input.key_run_release) current_state = player_states.walk;
+		if (speed_x == 0) current_state = player_states.idle;
+		
 		break;
 	}
 	
@@ -137,14 +129,21 @@ switch (current_state)
 		
 		current_animcurve = -1;
 		current_animcurve_duration = -1;
+		
+		// Switch state
+		if (Input.key_crouch_press or Input.key_jump_press)
+			current_state = speed_x != 0 ? player_states.walk : player_states.idle;
+		if (Input.key_run and speed_x != 0 and obj_shoot_area.direction_x == last_direction_x)
+			current_state = player_states.run;
+		
 		break;
 	}
 	case player_states.slide: {
 		var slide_dir = sign(speed_x);
-        if (slide_dir != 0)
+	    if (slide_dir != 0)
 		{
-            speed_x = slide_dir * top_speed_x_forward * run_multi;  // мощный слайд
-        }
+	        speed_x = slide_dir * top_speed_x_forward * run_multi;  // мощный слайд
+	    }
 		
 		if (alarm_get(3) == -1)
 		{
@@ -154,6 +153,18 @@ switch (current_state)
 		
 		image_yscale = start_yscale * 0.4;
 		state_jump = false;
+		
+		// Switch state
+		if (Input.key_crouch_press or Input.key_jump_press)
+		{
+			if (speed_x != 0)
+				current_state = !Input.key_run ? player_states.walk : player_states.run;
+			else
+				current_state = player_states.idle;
+			
+			audio_play_sound(snd_slide_stop, 100, false);
+		}
+		
 		break;
 	}
 }

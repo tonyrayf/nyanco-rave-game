@@ -1,3 +1,12 @@
+if (x > Camera.x + Camera.half_view_width)
+or (x < Camera.x - Camera.half_view_width)
+or (y > Camera.y + Camera.half_view_height)
+or (y < Camera.y - Camera.half_view_height)
+{
+	instance_destroy();
+	exit;
+}
+
 if (effective_range != -1)
 {
 	damage = start_damage * (1 - power(point_distance(xstart, ystart, x, y) / effective_range, 2));

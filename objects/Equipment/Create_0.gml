@@ -88,7 +88,6 @@ assault_rifle = {
 	weapon_sprite_left : spr_kilo_left,
 	
 	shake_amplitude : 3,
-	penetrate_probability : 20,
 }
 
 sniper_rifle = {
