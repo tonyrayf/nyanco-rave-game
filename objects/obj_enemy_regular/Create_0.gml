@@ -1,14 +1,18 @@
 hp = 150;//
-is_damaged = false;
+my_weapon = variable_clone(Equipment.smg);//
 speed_idle = 2;//speeds in different states
 speed_search = 4;//comment means that this variable can be used to configure
 speed_detected = 6;//
+bot_damage_multiplier = 0.001;//
 
 speed_x = 0;
 speed_y = 0;
 
 acceleration_g = 1;
 
+current_spread = 0;
+is_damaged = false;
+is_reloading = false;
 setup = true;
 name = "default_name";
 suspiciousness = 0;

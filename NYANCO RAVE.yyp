@@ -79,6 +79,7 @@
     {"id":{"name":"Layer","path":"objects/Layer/Layer.yy",},},
     {"id":{"name":"Layers_manager","path":"objects/Layers_manager/Layers_manager.yy",},},
     {"id":{"name":"Mouse","path":"objects/Mouse/Mouse.yy",},},
+    {"id":{"name":"obj_","path":"objects/obj_/obj_.yy",},},
     {"id":{"name":"obj_block_func","path":"objects/obj_block_func/obj_block_func.yy",},},
     {"id":{"name":"obj_block_solid","path":"objects/obj_block_solid/obj_block_solid.yy",},},
     {"id":{"name":"obj_bullet","path":"objects/obj_bullet/obj_bullet.yy",},},

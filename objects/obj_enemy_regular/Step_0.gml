@@ -95,8 +95,10 @@ if(current_state!=states.Detected and seq_inst!=undefined and seq_inst.is_damage
 switch current_state{
 	case states.Idle:
 		if(enemy_FOV.is_object_in_zone){
-			show_debug_message(name+" "+string(point_distance(x,y,obj_player.x,obj_player.y)));
-			suspiciousness+=500/point_distance(x,y,obj_player.x,obj_player.y);
+			if(self.path_speed!=0){
+				self.path_speed=path_speed=0;
+			}
+			suspiciousness+=1000/point_distance(x,y,obj_player.x,obj_player.y);
 			if(suspiciousness>=idle_to_search){
 				current_state=states.Search;
 				suspiciousness=0;
@@ -116,7 +118,7 @@ switch current_state{
 	break;
 	case states.Search:
 		if(enemy_FOV.is_object_in_zone){
-			suspiciousness+=500/point_distance(x,y,obj_player.x,obj_player.y);
+			suspiciousness+=1000/point_distance(x,y,obj_player.x,obj_player.y);
 			if(suspiciousness>=search_to_detected){
 				suspiciousness=0;
 				current_state=states.Detected;
@@ -134,6 +136,42 @@ switch current_state{
 		if(enemy_FOV.is_object_in_zone){
 			if(self.path_speed!=0){
 				self.path_speed=0;
+			}
+			if (alarm_get(1)==-1 and my_weapon.current_ammo > 0 and not is_reloading){
+				alarm_set(1,game_get_speed(gamespeed_fps)/my_weapon.fire_rate*60);
+				var _s = self;
+				repeat(my_weapon.shells_in_shot){
+					with (instance_create_layer(x-50*image_xscale, y-100, obj_player.layer, obj_bullet)){
+						var spread_dir = arctan(_s.current_spread / _s.my_weapon.range) * DEG_PER_RAD;
+						if(_s.image_xscale==1){
+							//direction = random_range(180-spread_dir,180+spread_dir);
+							direction = 180;
+						} else if (_s.image_xscale==-1){
+							//direction = random_range( - spread_dir,spread_dir);
+							direction = 0;
+							show_debug_message("RIGHT");
+						}
+						
+						var vel = _s.my_weapon.velocity;
+						var vel_spread = _s.my_weapon.velocity_spread / 100;
+						start_speed = random_range(vel * (1 - vel_spread), vel * (1 + vel_spread));
+						speed = start_speed;
+						
+						image_angle = direction;
+						sprite_index = _s.my_weapon.shell_sprite;
+						
+						start_damage = _s.my_weapon.damage*_s.bot_damage_multiplier;
+						damage = start_damage;
+					}
+				}
+				my_weapon.current_ammo -= 1;
+				current_spread += my_weapon.spread_jump;
+				
+				do_camera_shake(my_weapon.shake_amplitude, 0.3);
+		
+				var snd = my_weapon.shot_sound;
+				audio_play_sound(snd.sound, 100, false, snd.gain, 0, snd.pitch);
+				audio_play_sound(snd_weap, 100, false, 0.5);
 			}
 		} else {
 			if(self.path_speed==0){
