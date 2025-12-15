@@ -98,7 +98,6 @@
     {"id":{"name":"obj_lose","path":"objects/obj_lose/obj_lose.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_ricochet_bullet","path":"objects/obj_ricochet_bullet/obj_ricochet_bullet.yy",},},
-    {"id":{"name":"obj_shield","path":"objects/obj_shield/obj_shield.yy",},},
     {"id":{"name":"obj_shoot_area","path":"objects/obj_shoot_area/obj_shoot_area.yy",},},
     {"id":{"name":"obj_throw_devices_trajectory","path":"objects/obj_throw_devices_trajectory/obj_throw_devices_trajectory.yy",},},
     {"id":{"name":"obj_weapon","path":"objects/obj_weapon/obj_weapon.yy",},},
