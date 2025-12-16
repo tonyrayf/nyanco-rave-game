@@ -313,6 +313,20 @@ laser = {
 	draw_func : function () {
 		with (obj_weapon)
 		{
+			var dx = -30;
+			var dy = 0;
+
+			if (sprite_index == spr_pistol_right)
+			{
+				dx = -17;
+				dy = 13;
+			}
+			else if (sprite_index == spr_kilo_right)
+			{
+				dx = -42;
+				dy = 2;
+			}
+			
 			draw_sprite_ext (
 				spr_laser, 0,
 				sight_x - dir_cos * 10, sight_y + dir_sin * 10,

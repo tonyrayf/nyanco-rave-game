@@ -2,9 +2,9 @@
   "$GMSprite":"v2",
   "%Name":"spr_laser",
   "bboxMode":0,
-  "bbox_bottom":4,
+  "bbox_bottom":3,
   "bbox_left":0,
-  "bbox_right":22,
+  "bbox_right":8,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":5,
+  "height":4,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"3d657a37-1d66-4c85-a67b-ccf073a1bbbc","blendMode":0,"displayName":"default","isLocked":false,"name":"3d657a37-1d66-4c85-a67b-ccf073a1bbbc","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":23,
+  "width":9,
 }

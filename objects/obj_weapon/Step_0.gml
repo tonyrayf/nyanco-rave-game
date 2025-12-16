@@ -21,6 +21,7 @@ if (mods_setup)
 	{
 		second_weapon = second_w_mods[i++].change_func(second_weapon);
 	}
+	current_mods = first_w_mods;
 }
 
 if (!is_reloading)
@@ -64,7 +65,7 @@ if (alarm_get(0) == -1 and current_weapon.current_ammo > 0 and not is_reloading)
 	or (Input.key_shoot and current_weapon.auto)
 	{
 		// makes "sound", gives all enemies suspiciousness for shot
-		increase_sus_from_shot(x,y,8000);
+		if (!current_weapon.silent) increase_sus_from_shot(x,y,8000);
 		
 		// fire rate is in RPM, so formula is fps / fire_rate * 60 sec/min
 		alarm_set(0, game_get_speed(gamespeed_fps) / current_weapon.fire_rate * 60);

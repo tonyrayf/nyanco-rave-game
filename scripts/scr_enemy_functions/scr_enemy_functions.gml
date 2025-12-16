@@ -1,4 +1,3 @@
-
 function increase_sus_from_shot(xFrom,yFrom,sound_strength){
 	enemies_to_hear = [obj_enemy_regular,obj_enemy_shielded];
 	for(var i=0;i<array_length(enemies_to_hear);i++){

@@ -1,1 +1,0 @@
-name = "enemy_test_1";

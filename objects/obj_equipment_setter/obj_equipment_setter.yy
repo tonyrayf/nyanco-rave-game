@@ -30,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_block_func",
+    "path":"sprites/spr_block_func/spr_block_func.yy",
+  },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

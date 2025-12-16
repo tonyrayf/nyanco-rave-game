@@ -76,11 +76,11 @@ if (setup)
 		maxhp = hp;
 	}
 	
-	if(name!="default_name" and ds_map_exists(global.paths_map,name)){
+	if (name!="default_name" and ds_map_exists(global.paths_map,name)){
 		path_start(global.paths_map[?name],speed_idle,path_action_reverse,0);
 	}
 	
-	if(seq_dir==dirs.Left){
+	if (seq_dir==dirs.Left){
 		direction = 180;
 	}
 }
@@ -135,6 +135,7 @@ switch current_state{
 	break;
 	case states.Detected:
 		if(enemy_FOV.is_object_in_zone){
+			image_xscale = sign(obj_player.x - x);
 			if(self.path_speed!=0){
 				self.path_speed=0;
 			}
@@ -191,6 +192,7 @@ switch current_state{
 
 layer_sequence_x(seq, x);
 layer_sequence_y(seq, y);
+layer_sequence_xscale(seq, image_xscale);
 
 if(enemy_FOV.is_object_in_zone){
 	if((x-obj_player.x)>0){
