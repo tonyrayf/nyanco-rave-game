@@ -99,12 +99,6 @@ switch current_state{
 				self.path_speed=path_speed=0;
 			}
 			suspiciousness+=1000/point_distance(x,y,obj_player.x,obj_player.y);
-			if(suspiciousness>=idle_to_search){
-				current_state=states.Search;
-				suspiciousness=0;
-				alarm[0] = search_to_idle;
-				self.path_speed = speed_search;
-			}
 		} else {
 			if(self.path_speed==0){
 				self.path_speed=speed_idle;
@@ -115,16 +109,16 @@ switch current_state{
 				suspiciousness=0;
 			}
 		}
+		if(suspiciousness>=idle_to_search){
+			current_state=states.Search;
+			suspiciousness=0;
+			alarm[0] = search_to_idle;
+			self.path_speed = speed_search;
+		}
 	break;
 	case states.Search:
 		if(enemy_FOV.is_object_in_zone){
 			suspiciousness+=1000/point_distance(x,y,obj_player.x,obj_player.y);
-			if(suspiciousness>=search_to_detected){
-				suspiciousness=0;
-				current_state=states.Detected;
-				alarm[0] = -1;
-				self.path_speed = speed_detected;
-			}
 		} else {
 			if(suspiciousness>0){
 				suspiciousness-=search_to_detected/search_sus_return;
@@ -132,12 +126,20 @@ switch current_state{
 				suspiciousness=0;
 			}
 		}
+		if(suspiciousness>=search_to_detected){
+			suspiciousness=0;
+			current_state=states.Detected;
+			alarm[0] = -1;
+			self.path_speed = speed_detected;
+		}
+	break;
 	case states.Detected:
 		if(enemy_FOV.is_object_in_zone){
 			if(self.path_speed!=0){
 				self.path_speed=0;
 			}
 			if (alarm_get(1)==-1 and my_weapon.current_ammo > 0 and not is_reloading){
+				increase_sus_from_shot(x,y,800);
 				alarm_set(1,game_get_speed(gamespeed_fps)/my_weapon.fire_rate*60);
 				var _s = self;
 				repeat(my_weapon.shells_in_shot){
