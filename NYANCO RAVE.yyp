@@ -97,6 +97,7 @@
     {"id":{"name":"obj_enemy_regular","path":"objects/obj_enemy_regular/obj_enemy_regular.yy",},},
     {"id":{"name":"obj_enemy_shielded","path":"objects/obj_enemy_shielded/obj_enemy_shielded.yy",},},
     {"id":{"name":"obj_equipment_cursor","path":"objects/obj_equipment_cursor/obj_equipment_cursor.yy",},},
+    {"id":{"name":"obj_equipment_setter","path":"objects/obj_equipment_setter/obj_equipment_setter.yy",},},
     {"id":{"name":"obj_explosion","path":"objects/obj_explosion/obj_explosion.yy",},},
     {"id":{"name":"obj_fade","path":"objects/obj_fade/obj_fade.yy",},},
     {"id":{"name":"obj_frag_grenade","path":"objects/obj_frag_grenade/obj_frag_grenade.yy",},},

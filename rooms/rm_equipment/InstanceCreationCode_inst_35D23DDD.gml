@@ -1,0 +1,1 @@
+weapon = Equipment.assault_rifle;

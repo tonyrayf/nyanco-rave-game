@@ -1,0 +1,1 @@
+weapon = Equipment.sniper_rifle;

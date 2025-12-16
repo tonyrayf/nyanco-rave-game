@@ -1,3 +1,0 @@
-step_func = function() {
-	
-}
