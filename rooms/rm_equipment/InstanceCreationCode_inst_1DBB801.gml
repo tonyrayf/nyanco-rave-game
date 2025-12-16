@@ -1,1 +1,0 @@
-weapon = Equipment.pistol;
