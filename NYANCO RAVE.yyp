@@ -121,6 +121,7 @@
     {"id":{"name":"scr_camera_functions","path":"scripts/scr_camera_functions/scr_camera_functions.yy",},},
     {"id":{"name":"scr_const","path":"scripts/scr_const/scr_const.yy",},},
     {"id":{"name":"scr_easings_functions","path":"scripts/scr_easings_functions/scr_easings_functions.yy",},},
+    {"id":{"name":"scr_enemy_functions","path":"scripts/scr_enemy_functions/scr_enemy_functions.yy",},},
     {"id":{"name":"scr_enums","path":"scripts/scr_enums/scr_enums.yy",},},
     {"id":{"name":"scr_fx_functions","path":"scripts/scr_fx_functions/scr_fx_functions.yy",},},
     {"id":{"name":"scr_global_vars","path":"scripts/scr_global_vars/scr_global_vars.yy",},},
