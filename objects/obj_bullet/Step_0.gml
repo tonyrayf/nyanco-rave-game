@@ -24,7 +24,7 @@ repeat (speed)
 	var sine = -sin(degtorad(direction));
 	var delta_x = i * cosine;
 	var delta_y = i * sine;
-	var inst = instance_place(x + delta_x, y + delta_y, [obj_block_solid, obj_hitbox, obj_frag_grenade, obj_player]);
+	var inst = instance_place(x + delta_x, y + delta_y, [obj_block_solid, obj_hitbox, obj_impact_grenade, obj_player]);
 	if (inst != noone)
 	{
 		collision_func(inst, i, sine, cosine);
