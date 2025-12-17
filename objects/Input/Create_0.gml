@@ -9,7 +9,7 @@ keys_shoot = [ord("Z"), mb_left]; key_shoot = false; key_shoot_press = false;
 keys_reload = [ord("R")]; key_reload = false;
 
 keys_device = [ord("X"), mb_middle]; key_device = false; key_device_press = false; key_device_release = false;
-keys_device_wheel = [ord("Q")]; key_device_wheel = false;
+keys_device_wheel = [ord("Q")]; key_device_wheel = false; key_device_wheel_release = false;
 
 keys_first_weapon = [ord("1")]; key_first_weapon = false;
 keys_second_weapon = [ord("2")]; key_first_weapon = false;

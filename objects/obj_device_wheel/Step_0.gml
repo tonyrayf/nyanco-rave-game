@@ -1,22 +1,28 @@
-// Колесико вверх/вниз — переключаем
-var wheel_up = mouse_wheel_up();
-var wheel_down = mouse_wheel_down();
-
-if (wheel_up || wheel_down) {
+if (Input.key_device_wheel)
+{
     show_wheel = true;
-    wheel_timer = 120;  // 2 сек на 60fps
-    
-    if (wheel_up) {
-        current_index = (current_index + 1) % device_count;  // следующий
-    } else {
-        current_index = (current_index - 1 + device_count) % device_count;  // предыдущий
-    }
-    
-    current_device = devices[current_index];  // обновляем текущий
+	
+	if (Mouse.speed_y != 0 or Mouse.speed_x != 0)
+	{
+		distance += sqrt(Mouse.speed_x*Mouse.speed_x + Mouse.speed_y*Mouse.speed_y);
+		
+		if (distance >= distance_to_change)
+		{
+			distance = 0;
+			
+			var angle = radtodeg(arctan2(-Mouse.speed_y, Mouse.speed_x));
+			if (angle < 0) angle += 360;
+			current_index = clamp(floor(angle / 360 * device_count), 0, device_count - 1);
+			
+			current_device = devices[current_index];
+		}
+	}
 }
-
-// Таймер скрытия колеса
-if (show_wheel) {
-    wheel_timer--;
-    if (wheel_timer <= 0) show_wheel = false;
+else if (Input.key_device_wheel_release)
+{
+	obj_device.current_device = variable_clone(current_device.device);
+}
+else
+{
+	show_wheel = false;
 }

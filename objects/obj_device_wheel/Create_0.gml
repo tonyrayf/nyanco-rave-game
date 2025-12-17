@@ -1,16 +1,17 @@
-// Массив девайсов-structs (добавляй новые structs сюда)
 devices = [
-    { name: "Thermal Goggles", icon: spr_thermal_goggles, active: true },  // NVG/тепловизор
-    { name: "Impact Grenade", icon: spr_frag_grenade, active: true },    // граната
-    // Добавь новые: { name: "Flashbang", icon: spr_flash_icon, active: true }
+    { name: "Thermal Goggles", icon: spr_thermal_goggles, device : Equipment.thermal_googles },
+    { name: "Impact Grenade", icon: spr_impact_grenade, device : Equipment.impact_grenade },
 ];
 
-current_index = 0;  // текущий девайс
-current_device = devices[0];  // ссылка на struct
+current_index = 0;
+current_device = devices[0];
 
 device_count = array_length(devices);
-wheel_radius = 80;  // радиус колеса
-wheel_center_x = display_get_gui_width() / 2;
-wheel_center_y = display_get_gui_height() * 0.7;  // снизу экрана
-show_wheel = true;  // показывать колесо?
-wheel_timer = 0;     // таймер скрытия
+wheel_radius = 180;
+show_wheel = false;
+
+distance = 0;
+distance_to_change = 35;
+
+circle_x = Camera.half_view_width;
+circle_y = Camera.half_view_height - 200;

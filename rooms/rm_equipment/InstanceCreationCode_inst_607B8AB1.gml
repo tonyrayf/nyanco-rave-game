@@ -10,6 +10,8 @@ step_func = function()
 		{
 			obj_weapon.mods_setup = true;
 			instance_activate_object(obj_fade);
+			
+			audio_play_sound(snd_pistol_reload, 100, false, 0.2, 1);
 		}
 		
 		image_alpha = 0.5;

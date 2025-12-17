@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"sq_intro_Events17",
   "parent":{
-    "name":"NYANCO RAVE",
-    "path":"NYANCO RAVE.yyp",
+    "name":"Sequences",
+    "path":"folders/Sequences.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
