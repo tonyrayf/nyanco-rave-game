@@ -128,6 +128,8 @@ switch (current_state)
 		player_set_anim_curve(ac_crouch, step_delay / crouch_multi * 2);
 		
 		// Switch state
+		if (place_meeting(x, y - sprite_height, global.solid_objects)) break;
+		
 		if (Input.key_crouch_press or Input.key_jump_press)
 			current_state = speed_x != 0 ? player_states.walk : player_states.idle;
 		if (Input.key_run and speed_x != 0 and obj_shoot_area.direction_x == last_direction_x)
@@ -153,6 +155,8 @@ switch (current_state)
 		state_jump = false;
 		
 		// Switch state
+		if (place_meeting(x, y - sprite_height, global.solid_objects)) break;
+		
 		if (Input.key_crouch_press or Input.key_jump_press)
 		{
 			if (speed_x != 0)
