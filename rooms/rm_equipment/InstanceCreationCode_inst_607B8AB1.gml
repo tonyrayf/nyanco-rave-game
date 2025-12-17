@@ -9,7 +9,7 @@ step_func = function()
 		if (Input.key_shoot_press)
 		{
 			obj_weapon.mods_setup = true;
-			room_goto_next();
+			instance_activate_object(obj_fade);
 		}
 		
 		image_alpha = 0.5;

@@ -17,7 +17,7 @@ pistol = {
 	spread_lerp : 0.1,			
 	range : 500,				// in pixels
 	shot_sound : {
-		sound : snd_smg,
+		sound : snd_pistol,
 		pitch : 1,
 		gain : 1
 	},
@@ -391,8 +391,11 @@ impact_grenade = {
 						
             weapon_set_active(true);
 			
-			obj_shoot_area.x = trajectory_inst.x;
-			obj_shoot_area.y = trajectory_inst.y;
+			if (instance_exists(obj_shoot_area) and instance_exists(trajectory_inst))
+			{
+				obj_shoot_area.x = trajectory_inst.x;
+				obj_shoot_area.y = trajectory_inst.y;
+			}
 			
 			instance_destroy(trajectory_inst);
 			trajectory_inst = noone;

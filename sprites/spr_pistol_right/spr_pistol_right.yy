@@ -3,8 +3,8 @@
   "%Name":"spr_pistol_right",
   "bboxMode":0,
   "bbox_bottom":17,
-  "bbox_left":12,
-  "bbox_right":34,
+  "bbox_left":24,
+  "bbox_right":46,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":35,
+  "width":47,
 }

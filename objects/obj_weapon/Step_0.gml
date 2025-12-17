@@ -65,7 +65,7 @@ if (alarm_get(0) == -1 and current_weapon.current_ammo > 0 and not is_reloading)
 	or (Input.key_shoot and current_weapon.auto)
 	{
 		// makes "sound", gives all enemies suspiciousness for shot
-		if (!current_weapon.silent) increase_sus_from_shot(x,y,8000);
+		if (!current_weapon.silent) increase_sus_from_shot(x,y,8000, 3000);
 		
 		// fire rate is in RPM, so formula is fps / fire_rate * 60 sec/min
 		alarm_set(0, game_get_speed(gamespeed_fps) / current_weapon.fire_rate * 60);
@@ -75,8 +75,10 @@ if (alarm_get(0) == -1 and current_weapon.current_ammo > 0 and not is_reloading)
 		repeat (current_weapon.shells_in_shot)
 		{
 			var shell = !variable_struct_exists(current_weapon, "current_shell") ? obj_bullet : current_weapon.current_shell;
+			var bullet_x = sight_x;
+			var bullet_y = sight_y;
 			
-			with (instance_create_layer(sight_x, sight_y, obj_player.layer, shell))
+			with (instance_create_layer(bullet_x, bullet_y, obj_player.layer, shell))
 			{
 				// find direction spread in degrees from triangle lengths
 				var spread_dir = arctan(_s.current_spread / _s.current_weapon.range) * DEG_PER_RAD;

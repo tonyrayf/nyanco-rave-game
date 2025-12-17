@@ -8,9 +8,10 @@ radius = 400;	// in pixels
 image_xscale *= radius;
 image_yscale *= radius;
 
-
 do_camera_shake(4, 0.5);
 audio_play_sound(exp_c4_bang, 100, false, 1);
+
+increase_sus_from_shot(x, y, 99999, 10000);
 
 
 var insts = ds_list_create();

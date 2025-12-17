@@ -55,6 +55,8 @@ var state_jump = true;
 switch (current_state)
 {
 	case player_states.idle: {
+		sprite_index = spr_player_walk;
+		
 		speed_x = clamp(speed_x, -top_speed_x_forward, top_speed_x_forward);
 		
 		if (!Input.key_shoot)
@@ -80,6 +82,8 @@ switch (current_state)
 		break;
 	}
 	case player_states.walk: {
+		sprite_index = spr_player_walk;
+		
 		speed_x = obj_shoot_area.direction_x == RIGHT
 			? clamp(speed_x, -top_speed_x_back, top_speed_x_forward)
 			: clamp(speed_x, -top_speed_x_forward, top_speed_x_back);
@@ -95,6 +99,8 @@ switch (current_state)
 	}
 	
 	case player_states.run: {
+		sprite_index = spr_player_run;
+		
 		speed_x = obj_shoot_area.direction_x == RIGHT
 			? clamp(speed_x, -top_speed_x_back, top_speed_x_forward * run_multi)
 			: clamp(speed_x, -top_speed_x_forward * run_multi, top_speed_x_back);
@@ -111,6 +117,8 @@ switch (current_state)
 	}
 	
 	case player_states.crouch: {
+		sprite_index = spr_player_crouch;
+		
 		speed_x = obj_shoot_area.direction_x == RIGHT
 			? clamp(speed_x, -top_speed_x_back * crouch_multi, top_speed_x_forward * crouch_multi)
 			: clamp(speed_x, -top_speed_x_forward * crouch_multi, top_speed_x_back * crouch_multi);
@@ -128,6 +136,8 @@ switch (current_state)
 		break;
 	}
 	case player_states.slide: {
+		sprite_index = spr_player_slide;
+		
 		var slide_dir = sign(speed_x);
 	    if (slide_dir != 0)
 		{
@@ -217,6 +227,7 @@ if (place_meeting(x, y + speed_y, global.solid_objects)) //Collision check
 	{
 		has_fallen = true;
 		audio_play_sound(global.land_sounds[irandom(4)], 100, false);
+		increase_sus_from_shot(x, y, 190, 1500);
 	}
 	
 	while (!place_meeting(x, y + sign(speed_y), global.solid_objects))

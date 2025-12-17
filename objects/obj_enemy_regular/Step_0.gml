@@ -85,7 +85,8 @@ if (setup)
 	}
 }
 
-if(current_state!=states.Detected and seq_inst!=undefined and seq_inst.is_damaged){
+if (current_state!=states.Detected and seq_inst!=undefined and seq_inst.is_damaged and alarm_get(3) == -1)
+{
 	suspiciousness=0;
 	current_state=states.Detected;
 	alarm[0] = -1;
@@ -94,11 +95,18 @@ if(current_state!=states.Detected and seq_inst!=undefined and seq_inst.is_damage
 
 switch current_state{
 	case states.Idle:
+		if (last_state != current_state)
+		{
+			last_state = current_state;
+			alarm_set(3, reaction_time * game_get_speed(gamespeed_fps));
+		}
+		if (alarm_get(3) != -1) break;
+		
 		if(enemy_FOV.is_object_in_zone){
 			if(self.path_speed!=0){
 				self.path_speed=path_speed=0;
 			}
-			suspiciousness+=1000/point_distance(x,y,obj_player.x,obj_player.y);
+			suspiciousness+=2500/point_distance(x,y,obj_player.x,obj_player.y);
 		} else {
 			if(self.path_speed==0){
 				self.path_speed=speed_idle;
@@ -117,8 +125,15 @@ switch current_state{
 		}
 	break;
 	case states.Search:
+		if (last_state != current_state)
+		{
+			last_state = current_state;
+			alarm_set(3, reaction_time * game_get_speed(gamespeed_fps));
+		}
+		if (alarm_get(3) != -1) break;
+		
 		if(enemy_FOV.is_object_in_zone){
-			suspiciousness+=1000/point_distance(x,y,obj_player.x,obj_player.y);
+			suspiciousness+=2500/point_distance(x,y,obj_player.x,obj_player.y);
 		} else {
 			if(suspiciousness>0){
 				suspiciousness-=search_to_detected/search_sus_return;
@@ -128,29 +143,35 @@ switch current_state{
 		}
 		if(suspiciousness>=search_to_detected){
 			suspiciousness=0;
-			current_state=states.Detected;
+			current_state = states.Detected;
 			alarm[0] = -1;
 			self.path_speed = speed_detected;
 		}
 	break;
 	case states.Detected:
+		if (last_state != current_state)
+		{
+			last_state = current_state;
+			alarm_set(3, reaction_time * game_get_speed(gamespeed_fps));
+		}
+		if (alarm_get(3) != -1) break;
+		
+		if (instance_exists(obj_player)) image_xscale = sign(x - obj_player.x);
+		
 		if(enemy_FOV.is_object_in_zone){
-			image_xscale = sign(obj_player.x - x);
 			if(self.path_speed!=0){
 				self.path_speed=0;
 			}
 			if (alarm_get(1)==-1 and my_weapon.current_ammo > 0 and not is_reloading){
-				increase_sus_from_shot(x,y,800);
+				if (!my_weapon.silent) increase_sus_from_shot(x,y,8000, 3000);
 				alarm_set(1,game_get_speed(gamespeed_fps)/my_weapon.fire_rate*60);
 				var _s = self;
 				repeat(my_weapon.shells_in_shot){
 					with (instance_create_layer(x-50*image_xscale, y-100, obj_player.layer, obj_bullet)){
-						var spread_dir = arctan(_s.current_spread / _s.my_weapon.range) * DEG_PER_RAD;
-						if(_s.image_xscale==1){
-							direction = random_range(180-spread_dir,180+spread_dir);
-						} else if (_s.image_xscale==-1){
-							direction = random_range( - spread_dir,spread_dir);
-						}
+						var spread_dir = arctan(_s.current_spread / _s.my_weapon.range) * DEG_PER_RAD / 1.5;
+						var _dir = point_direction(x, y-100, obj_player.x, obj_player.aim_origin_y);
+						
+						direction = random_range(_dir-spread_dir,_dir+spread_dir);
 						
 						var vel = _s.my_weapon.velocity;
 						var vel_spread = _s.my_weapon.velocity_spread / 100;
@@ -165,6 +186,8 @@ switch current_state{
 					}
 				}
 				my_weapon.current_ammo -= 1;
+				
+				current_spread = lerp(current_spread, my_weapon.min_spread, 0.1);
 				current_spread += my_weapon.spread_jump;
 				
 				do_camera_shake(my_weapon.shake_amplitude, 0.3);
@@ -175,24 +198,24 @@ switch current_state{
 			} else if (alarm_get(1)==-1 and my_weapon.current_ammo <= 0 and not is_reloading) {
 				is_reloading = true;
 				alarm_set(2, my_weapon.reload_time * game_get_speed(gamespeed_fps));
-				if (variable_struct_exists(my_weapon, "reload_sound")) audio_play_sound(my_weapon.reload_sound, 100, false, 0.2);
+				if (variable_struct_exists(my_weapon, "reload_sound")) audio_play_sound(my_weapon.reload_sound, 100, false, 0.08);
 			}
 		} else {
 			if(self.path_speed==0){
 				self.path_speed=speed_detected;
 			}
-			if(not is_reloading and my_weapon.current_ammo<my_weapon.capacity*1){
+			if(not is_reloading and my_weapon.current_ammo<my_weapon.capacity){
 				is_reloading = true;
 				alarm_set(2, my_weapon.reload_time * game_get_speed(gamespeed_fps));
-				if (variable_struct_exists(my_weapon, "reload_sound")) audio_play_sound(my_weapon.reload_sound, 100, false, 0.2);
+				if (variable_struct_exists(my_weapon, "reload_sound")) audio_play_sound(my_weapon.reload_sound, 100, false, 0.08);
 			}
 		}
 	break;
 }
 
+layer_sequence_xscale(seq, image_xscale);
 layer_sequence_x(seq, x);
 layer_sequence_y(seq, y);
-layer_sequence_xscale(seq, image_xscale);
 
 if(enemy_FOV.is_object_in_zone){
 	if((x-obj_player.x)>0){

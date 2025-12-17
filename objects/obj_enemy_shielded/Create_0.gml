@@ -17,6 +17,7 @@ setup = true;
 name = "default_name";
 suspiciousness = 0;
 
+last_state = states.Idle;
 current_state = states.Idle;//
 idle_to_search = 300;//time it takes to go from one state to another
 search_to_detected = 180;//
@@ -24,6 +25,8 @@ search_to_idle=1800;//
 
 idle_sus_return = 400;//time it takes to suspiciousness to go back
 search_sus_return = 600;//
+
+reaction_time = 0.3;
 
 seq = layer_sequence_create(layer, x, y, sq_enemy_shielded);
 seq_inst = layer_sequence_get_instance(seq);

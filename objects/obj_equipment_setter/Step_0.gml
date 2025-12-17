@@ -1,6 +1,8 @@
 var insts = ds_list_create();
 instance_place_list(x, y, obj_equipment_weapon, insts, false);
-	
+
+if (ds_list_size(insts) == 0) current_w = -1;
+
 var i = 0;
 repeat (ds_list_size(insts))
 {

@@ -1,15 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_",
+  "%Name":"obj_uniform_light",
   "eventList":[],
   "managed":true,
-  "name":"obj_",
+  "name":"obj_uniform_light",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemies",
-    "path":"folders/Objects/Enemies.yy",
+    "name":"Light",
+    "path":"folders/Objects/Light.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_par_light",
+    "path":"objects/obj_par_light/obj_par_light.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -27,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_uniform_light",
+    "path":"sprites/spr_uniform_light/spr_uniform_light.yy",
+  },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

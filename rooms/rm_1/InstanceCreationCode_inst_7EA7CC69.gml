@@ -1,1 +1,1 @@
-fade_time = 0.5;
+fade_time = 3;

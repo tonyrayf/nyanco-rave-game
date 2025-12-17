@@ -1,6 +1,6 @@
 draw_self();
 
-var _sus_percent;
+var _sus_percent = 0;
 yOffset = 250;
 switch current_state{//draw state sign
 	case states.Idle:

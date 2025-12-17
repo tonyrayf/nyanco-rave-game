@@ -1,7 +1,7 @@
 // Массив девайсов-structs (добавляй новые structs сюда)
 devices = [
-    { name: "Thermal Goggles", icon: spr_thermal_icon, active: true },  // NVG/тепловизор
-    { name: "Impact Grenade", icon: spr_grenade_icon, active: true },    // граната
+    { name: "Thermal Goggles", icon: spr_thermal_goggles, active: true },  // NVG/тепловизор
+    { name: "Impact Grenade", icon: spr_frag_grenade, active: true },    // граната
     // Добавь новые: { name: "Flashbang", icon: spr_flash_icon, active: true }
 ];
 

@@ -3,8 +3,9 @@ uniform float u_time;
 
 void main() {
     vec4 base = texture2D(gm_BaseTexture, v_vTexcoord);
-    float gray = dot(base.rgb, vec3(0.299, 0.587, 0.114));
-
+    //float gray = dot(base.rgb, vec3(0.299, 0.587, 0.114));
+    float gray = dot(base.rgb, vec3(2.0, 2.0, 2.0));
+	
     // Однородный белый тепловизор
     vec3 thermal = vec3(gray * 1.8 + 0.3);
 

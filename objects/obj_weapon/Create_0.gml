@@ -21,7 +21,7 @@ sight_y = 0;
 
 // distance from hand to barrel
 barrel_dist = abs(sprite_width - sprite_get_xoffset(sprite_index) * image_xscale);
-origin_offset = 30;
+origin_offset = 60;
 
 draw_setup = true;
 
