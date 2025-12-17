@@ -32,6 +32,7 @@
     {"name":"inst_6CEA602A","path":"rooms/rm_1/rm_1.yy",},
     {"name":"inst_24F4E86A","path":"rooms/rm_1/rm_1.yy",},
     {"name":"inst_48B2B39C","path":"rooms/rm_1/rm_1.yy",},
+    {"name":"inst_56B9CA66","path":"rooms/rm_1/rm_1.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -61,6 +62,7 @@
         {"$GMRInstance":"v4","%Name":"inst_1C2887A9","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1C2887A9","objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":598.63464,"y":857.6703,},
         {"$GMRInstance":"v4","%Name":"inst_444CBBA1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_444CBBA1","objectId":{"name":"obj_device_wheel","path":"objects/obj_device_wheel/obj_device_wheel.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1110.0,"y":463.0,},
         {"$GMRInstance":"v4","%Name":"inst_10895D1E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_10895D1E","objectId":{"name":"obj_enemy_regular","path":"objects/obj_enemy_regular/obj_enemy_regular.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":3456.0,"y":896.0,},
+        {"$GMRInstance":"v4","%Name":"inst_56B9CA66","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_56B9CA66","objectId":{"name":"obj_enemy_mine","path":"objects/obj_enemy_mine/obj_enemy_mine.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":2944.0,"y":896.0,},
       ],"layers":[],"name":"VisibleObjects","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Assets","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_5E279794","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_5E279794","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0,"scaleY":2.0,"spriteId":{"name":"spr_forklift","path":"sprites/spr_forklift/spr_forklift.yy",},"x":2171.0,"y":647.0,},
